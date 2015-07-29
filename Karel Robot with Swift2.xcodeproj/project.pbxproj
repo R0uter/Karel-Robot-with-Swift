@@ -13,6 +13,9 @@
 		E960182D1B6922CB00544B27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E960182B1B6922CB00544B27 /* Main.storyboard */; };
 		E96018381B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */; };
 		E96018431B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */; };
+		E96018531B6923C100544B27 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018501B6923C100544B27 /* Coordinate.swift */; };
+		E96018541B6923C100544B27 /* Karel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018511B6923C100544B27 /* Karel.swift */; };
+		E96018551B6923C100544B27 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018521B6923C100544B27 /* Run.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		E960183E1B6922CB00544B27 /* Karel Robot with Swift2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Karel Robot with Swift2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Karel_Robot_with_Swift2UITests.swift; sourceTree = "<group>"; };
 		E96018441B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E96018501B6923C100544B27 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		E96018511B6923C100544B27 /* Karel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Karel.swift; sourceTree = "<group>"; };
+		E96018521B6923C100544B27 /* Run.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 				E96018271B6922CB00544B27 /* ViewController.swift */,
 				E96018291B6922CB00544B27 /* Assets.xcassets */,
 				E960182B1B6922CB00544B27 /* Main.storyboard */,
+				E96018501B6923C100544B27 /* Coordinate.swift */,
+				E96018511B6923C100544B27 /* Karel.swift */,
+				E96018521B6923C100544B27 /* Run.swift */,
 				E960182E1B6922CB00544B27 /* Info.plist */,
 			);
 			path = "Karel Robot with Swift2";
@@ -252,7 +261,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E96018281B6922CB00544B27 /* ViewController.swift in Sources */,
+				E96018541B6923C100544B27 /* Karel.swift in Sources */,
 				E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */,
+				E96018551B6923C100544B27 /* Run.swift in Sources */,
+				E96018531B6923C100544B27 /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +486,7 @@
 				E96018491B6922CB00544B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E960184A1B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2Tests" */ = {
 			isa = XCConfigurationList;
@@ -482,6 +495,7 @@
 				E960184C1B6922CB00544B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E960184D1B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2UITests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +504,7 @@
 				E960184F1B6922CB00544B27 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

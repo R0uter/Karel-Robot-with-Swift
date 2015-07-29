@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Karel Robot with Swift2
+//  Karl Robot
 //
-//  Created by R0uter on 15/7/29.
-//  Copyright © 2015年 R0uter. All rights reserved.
+//  Created by R0uter on 15/6/19.
+//  Copyright (c) 2015年 R0uter. All rights reserved.
 //
 
 import Cocoa
