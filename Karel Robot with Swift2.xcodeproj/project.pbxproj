@@ -1,0 +1,497 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018251B6922CB00544B27 /* AppDelegate.swift */; };
+		E96018281B6922CB00544B27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018271B6922CB00544B27 /* ViewController.swift */; };
+		E960182A1B6922CB00544B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96018291B6922CB00544B27 /* Assets.xcassets */; };
+		E960182D1B6922CB00544B27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E960182B1B6922CB00544B27 /* Main.storyboard */; };
+		E96018381B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */; };
+		E96018431B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E96018341B6922CB00544B27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E960181A1B6922CB00544B27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E96018211B6922CB00544B27;
+			remoteInfo = "Karel Robot with Swift2";
+		};
+		E960183F1B6922CB00544B27 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E960181A1B6922CB00544B27 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E96018211B6922CB00544B27;
+			remoteInfo = "Karel Robot with Swift2";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E96018221B6922CB00544B27 /* Karel Robot with Swift2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Karel Robot with Swift2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E96018251B6922CB00544B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E96018271B6922CB00544B27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E96018291B6922CB00544B27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E960182C1B6922CB00544B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E960182E1B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E96018331B6922CB00544B27 /* Karel Robot with Swift2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Karel Robot with Swift2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Karel_Robot_with_Swift2Tests.swift; sourceTree = "<group>"; };
+		E96018391B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E960183E1B6922CB00544B27 /* Karel Robot with Swift2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Karel Robot with Swift2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Karel_Robot_with_Swift2UITests.swift; sourceTree = "<group>"; };
+		E96018441B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E960181F1B6922CB00544B27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E96018301B6922CB00544B27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E960183B1B6922CB00544B27 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E96018191B6922CB00544B27 = {
+			isa = PBXGroup;
+			children = (
+				E96018241B6922CB00544B27 /* Karel Robot with Swift2 */,
+				E96018361B6922CB00544B27 /* Karel Robot with Swift2Tests */,
+				E96018411B6922CB00544B27 /* Karel Robot with Swift2UITests */,
+				E96018231B6922CB00544B27 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E96018231B6922CB00544B27 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E96018221B6922CB00544B27 /* Karel Robot with Swift2.app */,
+				E96018331B6922CB00544B27 /* Karel Robot with Swift2Tests.xctest */,
+				E960183E1B6922CB00544B27 /* Karel Robot with Swift2UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E96018241B6922CB00544B27 /* Karel Robot with Swift2 */ = {
+			isa = PBXGroup;
+			children = (
+				E96018251B6922CB00544B27 /* AppDelegate.swift */,
+				E96018271B6922CB00544B27 /* ViewController.swift */,
+				E96018291B6922CB00544B27 /* Assets.xcassets */,
+				E960182B1B6922CB00544B27 /* Main.storyboard */,
+				E960182E1B6922CB00544B27 /* Info.plist */,
+			);
+			path = "Karel Robot with Swift2";
+			sourceTree = "<group>";
+		};
+		E96018361B6922CB00544B27 /* Karel Robot with Swift2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */,
+				E96018391B6922CB00544B27 /* Info.plist */,
+			);
+			path = "Karel Robot with Swift2Tests";
+			sourceTree = "<group>";
+		};
+		E96018411B6922CB00544B27 /* Karel Robot with Swift2UITests */ = {
+			isa = PBXGroup;
+			children = (
+				E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */,
+				E96018441B6922CB00544B27 /* Info.plist */,
+			);
+			path = "Karel Robot with Swift2UITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E96018211B6922CB00544B27 /* Karel Robot with Swift2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E96018471B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2" */;
+			buildPhases = (
+				E960181E1B6922CB00544B27 /* Sources */,
+				E960181F1B6922CB00544B27 /* Frameworks */,
+				E96018201B6922CB00544B27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Karel Robot with Swift2";
+			productName = "Karel Robot with Swift2";
+			productReference = E96018221B6922CB00544B27 /* Karel Robot with Swift2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E96018321B6922CB00544B27 /* Karel Robot with Swift2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E960184A1B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2Tests" */;
+			buildPhases = (
+				E960182F1B6922CB00544B27 /* Sources */,
+				E96018301B6922CB00544B27 /* Frameworks */,
+				E96018311B6922CB00544B27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E96018351B6922CB00544B27 /* PBXTargetDependency */,
+			);
+			name = "Karel Robot with Swift2Tests";
+			productName = "Karel Robot with Swift2Tests";
+			productReference = E96018331B6922CB00544B27 /* Karel Robot with Swift2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E960183D1B6922CB00544B27 /* Karel Robot with Swift2UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E960184D1B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2UITests" */;
+			buildPhases = (
+				E960183A1B6922CB00544B27 /* Sources */,
+				E960183B1B6922CB00544B27 /* Frameworks */,
+				E960183C1B6922CB00544B27 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E96018401B6922CB00544B27 /* PBXTargetDependency */,
+			);
+			name = "Karel Robot with Swift2UITests";
+			productName = "Karel Robot with Swift2UITests";
+			productReference = E960183E1B6922CB00544B27 /* Karel Robot with Swift2UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E960181A1B6922CB00544B27 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = R0uter;
+				TargetAttributes = {
+					E96018211B6922CB00544B27 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					E96018321B6922CB00544B27 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = E96018211B6922CB00544B27;
+					};
+					E960183D1B6922CB00544B27 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = E96018211B6922CB00544B27;
+					};
+				};
+			};
+			buildConfigurationList = E960181D1B6922CB00544B27 /* Build configuration list for PBXProject "Karel Robot with Swift2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E96018191B6922CB00544B27;
+			productRefGroup = E96018231B6922CB00544B27 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E96018211B6922CB00544B27 /* Karel Robot with Swift2 */,
+				E96018321B6922CB00544B27 /* Karel Robot with Swift2Tests */,
+				E960183D1B6922CB00544B27 /* Karel Robot with Swift2UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E96018201B6922CB00544B27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E960182A1B6922CB00544B27 /* Assets.xcassets in Resources */,
+				E960182D1B6922CB00544B27 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E96018311B6922CB00544B27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E960183C1B6922CB00544B27 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E960181E1B6922CB00544B27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96018281B6922CB00544B27 /* ViewController.swift in Sources */,
+				E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E960182F1B6922CB00544B27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96018381B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E960183A1B6922CB00544B27 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E96018431B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E96018351B6922CB00544B27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E96018211B6922CB00544B27 /* Karel Robot with Swift2 */;
+			targetProxy = E96018341B6922CB00544B27 /* PBXContainerItemProxy */;
+		};
+		E96018401B6922CB00544B27 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E96018211B6922CB00544B27 /* Karel Robot with Swift2 */;
+			targetProxy = E960183F1B6922CB00544B27 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E960182B1B6922CB00544B27 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E960182C1B6922CB00544B27 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E96018451B6922CB00544B27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E96018461B6922CB00544B27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E96018481B6922CB00544B27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Karel Robot with Swift2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.logcg.Karel-Robot-with-Swift2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E96018491B6922CB00544B27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Karel Robot with Swift2/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.logcg.Karel-Robot-with-Swift2";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E960184B1B6922CB00544B27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Karel Robot with Swift2Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.logcg.Karel-Robot-with-Swift2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karel Robot with Swift2.app/Contents/MacOS/Karel Robot with Swift2";
+			};
+			name = Debug;
+		};
+		E960184C1B6922CB00544B27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Karel Robot with Swift2Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.logcg.Karel-Robot-with-Swift2Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Karel Robot with Swift2.app/Contents/MacOS/Karel Robot with Swift2";
+			};
+			name = Release;
+		};
+		E960184E1B6922CB00544B27 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Karel Robot with Swift2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.logcg.Karel-Robot-with-Swift2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Karel Robot with Swift2";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		E960184F1B6922CB00544B27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Karel Robot with Swift2UITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.logcg.Karel-Robot-with-Swift2UITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Karel Robot with Swift2";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E960181D1B6922CB00544B27 /* Build configuration list for PBXProject "Karel Robot with Swift2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E96018451B6922CB00544B27 /* Debug */,
+				E96018461B6922CB00544B27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E96018471B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E96018481B6922CB00544B27 /* Debug */,
+				E96018491B6922CB00544B27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E960184A1B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E960184B1B6922CB00544B27 /* Debug */,
+				E960184C1B6922CB00544B27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E960184D1B6922CB00544B27 /* Build configuration list for PBXNativeTarget "Karel Robot with Swift2UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E960184E1B6922CB00544B27 /* Debug */,
+				E960184F1B6922CB00544B27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E960181A1B6922CB00544B27 /* Project object */;
+}
