@@ -9,29 +9,16 @@
 import Foundation
 import Cocoa
 
-class Run {
-   
-    func move() {
-        sleep(UInt32(slowTime)) //不要怪我，我确实不会延迟的写法………………
-            karel.move()
-    }
+class Run:Karel {
     
-    func turnLeft() {
-        sleep(UInt32(slowTime))
-            karel.turnLeft()
-    }
     
-    func pickBeeper() {
-        sleep(UInt32(slowTime))
-        karel.pickBeeper()
-        
-    }
+//    func turnRight() {  //在这里可以声明更多自定义函数！
+//    turnLeft()
+//        turnLeft()
+//        turnLeft()
+//    }
     
-    func putBeeper() {
-        sleep(UInt32(slowTime))
-        karel.putBeeper()
-        
-    }
+    
     
     func run() {
         backgrooundQueue.addOperationWithBlock(){
@@ -39,7 +26,11 @@ class Run {
 //            在这里写入操作Karl的方法～
 //            只可以使用上边的四种方法！
             
-            
+            self.move()
+            self.turnLeft()
+            self.move()
+            self.move()
+//            self.turnRight()
             
             
                    }}
