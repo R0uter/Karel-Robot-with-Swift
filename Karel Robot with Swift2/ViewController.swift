@@ -20,7 +20,8 @@
 */
 
 import Cocoa
-var karel = Karel()
+
+var karel = Run()
 var isStoped = false
 var backgrooundQueue = NSOperationQueue()
 var mainQueue = NSOperationQueue.mainQueue()
@@ -31,13 +32,13 @@ var block = [NSImageView](count: 100, repeatedValue: NSImageView() )
 //为了所有的类都能访问到，我用了一堆的全局变量，不要骂我。
 
 class ViewController: NSViewController {
-    var run = Run()
+    
     
     
     @IBOutlet weak var map: NSView!
     
     @IBAction func run(sender: NSButton) {
-        run.run() //多用一个类是为了分离代码——算了，反正最后也失败了。
+        karel.run()                                     //多用一个类是为了分离代码——算了，反正最后也失败了。
     }
    
     @IBAction func stop(sender: NSButton) {
@@ -45,7 +46,7 @@ class ViewController: NSViewController {
         
     }
     
-    @IBAction func speedController(sender: NSSlider) {//本来想用来调节速度，最后成了慢速模式开关。
+    @IBAction func speedController(sender: NSSlider) {  //本来想用来调节速度，最后成了慢速模式开关。
       let a = sender.integerValue
         slowTime = a
     }
