@@ -141,8 +141,31 @@ extension Karel {
         
     } //End of pikBeeper
 
-    
-   
+}
 
-  
+extension Karel {
+    func isBlocked() -> Bool {                                      //判断当前Karel面向是否block
+        var isBlocked = false
+        
+        switch self.direction {
+        case .east where coordinate.x == 9 || !block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
+            isBlocked = true
+        case .south where coordinate.y == 0 || !block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
+            isBlocked = true
+        case .west where coordinate.x == 0 || !block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
+            isBlocked = true
+        case .north where coordinate.y == 9 || !block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+            isBlocked = true
+        default:
+            break
+        }
+
+        return isBlocked
+    }
+    
+    func isBeeperHere() -> Bool {                                   //判断当前坐标下是否有Beeper
+        let be = Int(coordinate.x) * 10 + Int(coordinate.y)   //将抽象坐标转化为数组的标记
+        return beeperNumCount[be] > 0
+        
+    }
 }
