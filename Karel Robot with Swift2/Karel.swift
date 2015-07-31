@@ -28,7 +28,25 @@ class Karel:NSImageView {
     
     
     func initKarel () {                                 //初始化一个karel，我懒得写构造了，直接写个函数完事。
-        self.frame = CGRectMake(4, 0, 50, 50)
+        coordinate = NSPoint(x: 0, y: 0)                //设定Karel坐标
+        direction = .east                              //设定初始化Karel方向
+        
+        switch self.direction {                         //根据方向初始化Karel
+        case .north:
+                self.frameCenterRotation = 90
+        case .east:
+                self.frameCenterRotation = 0
+        case .south:
+                self.frameCenterRotation = 270
+        case .west:
+                self.frameCenterRotation = 180
+            
+        }
+
+        
+       let rect =  getCoor.getRealCoordinate(coordinate)
+        
+        self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()
     
