@@ -20,6 +20,7 @@ class Karel:NSImageView {
             return direction
         }
     } //End of getDirection
+    
 
     enum Direction {                                    //创建一个代表karel朝向的枚举。
         case east,south,west,north
