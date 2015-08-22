@@ -24,7 +24,10 @@ class Karel:NSImageView {
         }
     } //End of getDirection
     
-    
+    func beeperNumClean() {
+        beeperNumCount.removeAll()
+        beeperNumCount = [Int](count: 100, repeatedValue: 0)
+    }
  
     
     
@@ -163,67 +166,72 @@ extension Karel {
     }}
 
 extension Karel {                                               //根据遍历生成好的状态序列。
-    func program () {
+    func toEnd () throws {
         for stat in karelStat {
-            if  let coor = stat.coordinate {
-                
-                if stat.blocked  {NSLog("哎呀！撞墙了！")}
-                
-                tmpCoor = coor
-                
-                let  realcoor = stat.getRealCoordinate(coor)
-                
-                let x:CGFloat = realcoor.x
-                let y:CGFloat =  realcoor.y
-                    self.frame = CGRectMake(x, y, 50, 50)
-                
-            }
-            
-            if let direction = stat.direction {
-                switch direction {
-                case .east:
-//                        mainQueue.addOperationWithBlock(){
-                            self.frameCenterRotation = 0
-                case .south:
-//                        mainQueue.addOperationWithBlock(){
-                            self.frameCenterRotation = 270
-                case .west:
-                    
-//                        mainQueue.addOperationWithBlock(){
-                            self.frameCenterRotation = 180
-                case .north:
-//                        mainQueue.addOperationWithBlock(){
-                            self.frameCenterRotation = 90
-                    
-                }
-
-                
-            }
-            
-            if let incr = stat.beeper {
-               
-                     let be = Int(tmpCoor.x) * 10 + Int(tmpCoor.y)
-                    if (beeperNumCount[be] + incr) >= 0 {
-                        beeperNumCount[be] += incr
-                        if beeperNumCount[be] > 0 {                        //如果没有则放置Beeper
-                            beeper[be].hidden = false
-                            beeperCount[be].hidden = false
-                        } else {
-                            beeper[be].hidden = true
-                            beeperCount[be].hidden = true
-                        }
-                        //                                最后刷新Beeper的数量显示
-                        beeperCount[be].stringValue = "\(beeperNumCount[be])"
-
-           
-                    
-                }
-                
-            }
-        }
+           try checkStat(stat)
+                   }
         
         
     }
+    
+    func checkStat (stat:Stat) throws {
+        
+        if  let coor = stat.coordinate {
+            tmpCoor = coor
+            if stat.blocked  {throw Error.duang}
+            let  realcoor = stat.getRealCoordinate(coor)
+            
+            let x:CGFloat = realcoor.x
+            let y:CGFloat =  realcoor.y
+            self.frame = CGRectMake(x, y, 50, 50)
+            
+        }
+        
+        if let direction = stat.direction {
+            switch direction {
+            case .east:
+                //                        mainQueue.addOperationWithBlock(){
+                self.frameCenterRotation = 0
+            case .south:
+                //                        mainQueue.addOperationWithBlock(){
+                self.frameCenterRotation = 270
+            case .west:
+                
+                //                        mainQueue.addOperationWithBlock(){
+                self.frameCenterRotation = 180
+            case .north:
+                //                        mainQueue.addOperationWithBlock(){
+                self.frameCenterRotation = 90
+                
+            }
+            
+            
+        }
+        
+        if let incr = stat.beeper {
+            
+            let be = Int(tmpCoor.x) * 10 + Int(tmpCoor.y)
+            if (beeperNumCount[be] + incr) >= 0 {
+                beeperNumCount[be] += incr
+                if beeperNumCount[be] > 0 {                        //如果没有则放置Beeper
+                    beeper[be].hidden = false
+                    beeperCount[be].hidden = false
+                } else {
+                    beeper[be].hidden = true
+                    beeperCount[be].hidden = true
+                }
+                //                                最后刷新Beeper的数量显示
+                beeperCount[be].stringValue = "\(beeperNumCount[be])"
+                
+                
+                
+            }
+            
+        }
+        
+    }
+    
+
    
     
 }
