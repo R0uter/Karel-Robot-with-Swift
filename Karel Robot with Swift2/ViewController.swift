@@ -21,24 +21,62 @@
 
 import Cocoa
 
-var karel = Run()
-var isStoped = false
+var karel = Run()   //karel的实例
+var isStoped = false  //是否停止，此功能尚未实现
+//——————————
 var backgrooundQueue = NSOperationQueue()
 var mainQueue = NSOperationQueue.mainQueue()
-var slowTime = 0
-var beeper = [NSImageView](count: 100, repeatedValue: NSImageView())
-var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField())
-var block = [NSImageView](count: 100, repeatedValue: NSImageView() )
+//——————————两个线程
+
+var slowTime = 0 //调整Karel速度，此功能尚未实现
+
+var beeper = [NSImageView](count: 100, repeatedValue: NSImageView())  //很2的储存Beeper数组的方法
+var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField()) //这个用来储存Beeper堆叠
+var block = [NSImageView](count: 100, repeatedValue: NSImageView() ) //储存block位置
+var karelStat:[Stat] = [] //实现了Karel位置状态的静态化，为调整速度做准备
 //为了所有的类都能访问到，我用了一堆的全局变量，不要骂我。
 
 class ViewController: NSViewController {
+    var step = 0
     
     
-    
+    @IBOutlet weak var duang: NSTextField!
     @IBOutlet weak var map: NSView!
     
+    @IBOutlet weak var stepButton: NSButton!
+    @IBOutlet weak var reset: NSButton!
+    @IBOutlet weak var run: NSButton!
+    @IBAction func step(sender: AnyObject) {
+        run.enabled = false
+        reset.enabled = true
+        if step < karelStat.count {
+            let stat = karelStat[step]
+            do {  try karel.checkStat(stat) } catch {duang.hidden = false}
+            ++step
+        } else {
+            stepButton.enabled = false
+        }
+        
+        
+        
+        
+    }
+    @IBAction func reset(sender: AnyObject) {
+        resetWorld()
+        karel.beeperNumClean()
+        karel.initKarel()
+        karel.initBlockAndBeeper()
+        step = 0
+        run.enabled = true
+        stepButton.enabled = true
+        duang.hidden = true
+        
+    }
     @IBAction func run(sender: NSButton) {
-        karel.run()                                     //多用一个类是为了分离代码——算了，反正最后也失败了。
+        do {try karel.toEnd()} catch {duang.hidden = false}
+        reset.enabled = true
+        run.enabled = false
+        stepButton.enabled = false
     }
    
     @IBAction func stop(sender: NSButton) {
@@ -56,16 +94,41 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        karel.initKarel()
+        karel.initKarel()                               //直接初始化Karel
+        
+        //初始化beeper、堆叠以及block位置
+        
+       genWorld()
+        karel.initBlockAndBeeper() //根据设定配置Beeper和block
+        
+        map.addSubview(karel)
+        karel.run() 
+        
+
         
         
-        
+        // Do any additional setup after loading the view.
+    }
+    
+   
+    
+    
+    override func viewDidAppear() {
+    }
+
+    override var representedObject: AnyObject? {
+        didSet {
+        // Update the view, if already loaded.
+        }
+    }
+    
+    func genWorld() {
         for i in 0...99 {
-                beeper[i] = NSImageView()
-                beeper[i].frame = CGRectMake(CGFloat( Int(i / 10) * 60 + 5), CGFloat((i % 10) * 50), 50, 50)
-                beeper[i].image = NSImage(named: "beeper")
-                beeper[i].hidden = true
-                map.addSubview(beeper[i])
+            beeper[i] = NSImageView()
+            beeper[i].frame = CGRectMake(CGFloat( Int(i / 10) * 60 + 5), CGFloat((i % 10) * 50), 50, 50)
+            beeper[i].image = NSImage(named: "beeper")
+            beeper[i].hidden = true
+            map.addSubview(beeper[i])
             
         }
         
@@ -87,26 +150,28 @@ class ViewController: NSViewController {
             map.addSubview(block[i])
             
         }
-        karel.initBlockAndBeeper()
-        
-        map.addSubview(karel)
         
 
-        
-        
-        // Do any additional setup after loading the view.
     }
     
-   
-    
-    
-    override func viewDidAppear() {
-    }
-
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
+    func resetWorld() {
+        for i in 0...99 {
+            beeper[i].hidden = true
+            
         }
+        
+        for i in 0...99 {
+            beeperCount[i].stringValue = ""
+            beeperCount[i].hidden = true
+            
+        }
+        
+        for i in 0...99 {
+            block[i].hidden = true
+            
+        }
+        
+
     }
   
     
