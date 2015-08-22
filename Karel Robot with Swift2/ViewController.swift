@@ -21,14 +21,19 @@
 
 import Cocoa
 
-var karel = Run()
-var isStoped = false
+var karel = Run()   //karel的实例
+var isStoped = false  //是否停止，此功能尚未实现
+//——————————
 var backgrooundQueue = NSOperationQueue()
 var mainQueue = NSOperationQueue.mainQueue()
-var slowTime = 0
-var beeper = [NSImageView](count: 100, repeatedValue: NSImageView())
-var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField())
-var block = [NSImageView](count: 100, repeatedValue: NSImageView() )
+//——————————两个线程
+
+var slowTime = 0 //调整Karel速度，此功能尚未实现
+
+var beeper = [NSImageView](count: 100, repeatedValue: NSImageView())  //很2的储存Beeper数组的方法
+var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField()) //这个用来储存Beeper堆叠
+var block = [NSImageView](count: 100, repeatedValue: NSImageView() ) //储存block位置
+var karelStat:[Stat] = [] //实现了Karel位置状态的静态化，为调整速度做准备
 //为了所有的类都能访问到，我用了一堆的全局变量，不要骂我。
 
 class ViewController: NSViewController {
@@ -39,6 +44,7 @@ class ViewController: NSViewController {
     
     @IBAction func run(sender: NSButton) {
         karel.run()                                     //多用一个类是为了分离代码——算了，反正最后也失败了。
+        karel.program()
     }
    
     @IBAction func stop(sender: NSButton) {
@@ -56,9 +62,9 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        karel.initKarel()
+        karel.initKarel()                               //直接初始化Karel
         
-        
+        //初始化beeper、堆叠以及block位置
         
         for i in 0...99 {
                 beeper[i] = NSImageView()
@@ -87,7 +93,9 @@ class ViewController: NSViewController {
             map.addSubview(block[i])
             
         }
-        karel.initBlockAndBeeper()
+        
+        
+        karel.initBlockAndBeeper() //根据设定配置Beeper和block
         
         map.addSubview(karel)
         

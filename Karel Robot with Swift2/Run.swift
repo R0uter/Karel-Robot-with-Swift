@@ -21,19 +21,26 @@ class Run:Karel {
     
     
     func run() {
-        backgrooundQueue.addOperationWithBlock(){
+//        backgrooundQueue.addOperationWithBlock(){
        
 //            在这里写入操作Karl的方法～
 //            只可以使用上边的四种方法！
             
             self.move()
+        self.move()
             self.turnLeft()
             self.move()
             self.move()
+         self.turnLeft()
+        self.move()
+        self.move()
+        self.putBeeper()
+        self.putBeeper()
+        self.move()
 //            self.turnRight()
             
             
-                   }}
+                   }
         
     
 }
