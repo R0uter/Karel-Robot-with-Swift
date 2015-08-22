@@ -13,8 +13,6 @@
 		E96018281B6922CB00544B27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018271B6922CB00544B27 /* ViewController.swift */; };
 		E960182A1B6922CB00544B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96018291B6922CB00544B27 /* Assets.xcassets */; };
 		E960182D1B6922CB00544B27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E960182B1B6922CB00544B27 /* Main.storyboard */; };
-		E96018381B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */; };
-		E96018431B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */; };
 		E96018531B6923C100544B27 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018501B6923C100544B27 /* Coordinate.swift */; };
 		E96018551B6923C100544B27 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018521B6923C100544B27 /* Run.swift */; };
 /* End PBXBuildFile section */
@@ -46,11 +44,7 @@
 		E960182C1B6922CB00544B27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E960182E1B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E96018331B6922CB00544B27 /* Karel Robot with Swift2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Karel Robot with Swift2Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Karel_Robot_with_Swift2Tests.swift; sourceTree = "<group>"; };
-		E96018391B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E960183E1B6922CB00544B27 /* Karel Robot with Swift2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Karel Robot with Swift2UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Karel_Robot_with_Swift2UITests.swift; sourceTree = "<group>"; };
-		E96018441B6922CB00544B27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E96018501B6923C100544B27 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		E96018521B6923C100544B27 /* Run.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,8 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				E96018241B6922CB00544B27 /* Karel Robot with Swift2 */,
-				E96018361B6922CB00544B27 /* Karel Robot with Swift2Tests */,
-				E96018411B6922CB00544B27 /* Karel Robot with Swift2UITests */,
 				E96018231B6922CB00544B27 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -114,24 +106,6 @@
 				E960182E1B6922CB00544B27 /* Info.plist */,
 			);
 			path = "Karel Robot with Swift2";
-			sourceTree = "<group>";
-		};
-		E96018361B6922CB00544B27 /* Karel Robot with Swift2Tests */ = {
-			isa = PBXGroup;
-			children = (
-				E96018371B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift */,
-				E96018391B6922CB00544B27 /* Info.plist */,
-			);
-			path = "Karel Robot with Swift2Tests";
-			sourceTree = "<group>";
-		};
-		E96018411B6922CB00544B27 /* Karel Robot with Swift2UITests */ = {
-			isa = PBXGroup;
-			children = (
-				E96018421B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift */,
-				E96018441B6922CB00544B27 /* Info.plist */,
-			);
-			path = "Karel Robot with Swift2UITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E96018381B6922CB00544B27 /* Karel_Robot_with_Swift2Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +257,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E96018431B6922CB00544B27 /* Karel_Robot_with_Swift2UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
