@@ -708,7 +708,7 @@
                 </viewController>
                 <customObject id="4v7-ue-HSL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1282" y="-215"/>
+            <point key="canvasLocation" x="986" y="-190"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -827,7 +827,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7ZY-HX-jOO">
-                                            <rect key="frame" x="300" y="0.0" width="5" height="498"/>
+                                            <rect key="frame" x="300" y="0.0" width="4" height="498"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -878,7 +878,7 @@
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJT-id-3cz">
                                 <rect key="frame" x="18" y="30" width="604" height="25"/>
                                 <animations/>
-                                <sliderCell key="cell" alignment="left" maxValue="1" tickMarkPosition="above" numberOfTickMarks="2" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Fb8-hL-6Qd"/>
+                                <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="0.5" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Fb8-hL-6Qd"/>
                                 <connections>
                                     <action selector="speedController:" target="XfG-lQ-9wD" id="x7p-vy-Qiq"/>
                                 </connections>
@@ -893,7 +893,7 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1I-Q5-xf8">
                                 <rect key="frame" x="662" y="398" width="100" height="83"/>
                                 <animations/>
-                                <buttonCell key="cell" type="squareTextured" title="看结果" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZKc-3z-Aou">
+                                <buttonCell key="cell" type="squareTextured" title="运行" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZKc-3z-Aou">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
@@ -915,9 +915,9 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUh-gW-rI0">
                                 <rect key="frame" x="662" y="175" width="100" height="83"/>
                                 <animations/>
-                                <buttonCell key="cell" type="squareTextured" title="停止" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7c7-AB-azi">
+                                <buttonCell key="cell" type="squareTextured" title="暂停" bezelStyle="texturedSquare" imagePosition="overlaps" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7c7-AB-azi">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="stop:" target="XfG-lQ-9wD" id="lOR-1O-uX5"/>
@@ -943,15 +943,27 @@
                                     <action selector="reset:" target="XfG-lQ-9wD" id="tuU-GK-TsU"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vzu-A0-FpU">
+                                <rect key="frame" x="662" y="65" width="118" height="23"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="程序结束！" drawsBackground="YES" id="A7g-5h-Dgh">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="0.94541475789999996" green="0.13263675729999999" blue="0.044164824599999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.15149857789999999" green="0.42469751830000002" blue="0.1562724885" alpha="1" colorSpace="calibratedRGB"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
                         <outlet property="duang" destination="qh5-Gu-bdv" id="UDB-xB-8hd"/>
                         <outlet property="map" destination="KCU-UV-vBE" id="vwd-dI-xp8"/>
+                        <outlet property="programEnd" destination="Vzu-A0-FpU" id="jXO-t2-BcV"/>
                         <outlet property="reset" destination="FsF-mN-VeU" id="lQn-WW-pDi"/>
                         <outlet property="run" destination="a1I-Q5-xf8" id="hwg-a3-qB9"/>
+                        <outlet property="slider" destination="QJT-id-3cz" id="Hze-nO-ftV"/>
                         <outlet property="stepButton" destination="hGB-VN-5vc" id="h1H-t8-mMf"/>
+                        <outlet property="stop" destination="DUh-gW-rI0" id="QWE-me-pre"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

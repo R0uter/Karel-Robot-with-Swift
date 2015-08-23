@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9006C7C1B8A203B00372B69 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E9006C7B1B8A203B00372B69 /* README.md */; };
 		E94528361B6E7B7100F3ADD7 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94528351B6E7B7100F3ADD7 /* Stat.swift */; };
 		E94528381B6E84A100F3ADD7 /* Karel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94528371B6E84A100F3ADD7 /* Karel.swift */; };
 		E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018251B6922CB00544B27 /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9006C7B1B8A203B00372B69 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E94528351B6E7B7100F3ADD7 /* Stat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		E94528371B6E84A100F3ADD7 /* Karel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Karel.swift; sourceTree = "<group>"; };
 		E96018221B6922CB00544B27 /* Karel Robot with Swift2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Karel Robot with Swift2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,7 @@
 		E96018191B6922CB00544B27 = {
 			isa = PBXGroup;
 			children = (
+				E9006C7B1B8A203B00372B69 /* README.md */,
 				E96018241B6922CB00544B27 /* Karel Robot with Swift2 */,
 				E96018231B6922CB00544B27 /* Products */,
 			);
@@ -240,6 +243,7 @@
 				E96018281B6922CB00544B27 /* ViewController.swift in Sources */,
 				E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */,
 				E94528361B6E7B7100F3ADD7 /* Stat.swift in Sources */,
+				E9006C7C1B8A203B00372B69 /* README.md in Sources */,
 				E96018551B6923C100544B27 /* Run.swift in Sources */,
 				E94528381B6E84A100F3ADD7 /* Karel.swift in Sources */,
 				E96018531B6923C100544B27 /* Coordinate.swift in Sources */,

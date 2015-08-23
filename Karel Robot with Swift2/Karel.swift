@@ -11,18 +11,20 @@ import Cocoa
 
 class Karel:NSImageView {
     
-    private var beeperNumCount = [Int](count: 100, repeatedValue: 0)
+    private var beeperNumCount = [Int](count: 100, repeatedValue: 0)        //储存 Beeper 的堆叠数量
     private var coordinate:NSPoint = NSPoint(x: 0, y: 0) //karel 的当前坐标位置
     private var direction:Direction = .east //朝向
-    private var getCoor = Coordinate()
-    private var tmpCoor = NSPoint()
-    private var tmpDire:Direction = .east
+    private var getCoor = Coordinate()      //用来换算真实坐标的
+    private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
+    private var tmpDire:Direction = .east       //临时方向，用途如上
+    
     
     var getDirection:Direction {                        //这是个getter，我尝试用计算属性来搞定这件事情。但是问题在于我忘了哪里用过它了。——反正就留着吧：）
         get {
             return direction
         }
     } //End of getDirection
+    
     
     func beeperNumClean() {
         beeperNumCount.removeAll()
@@ -49,10 +51,11 @@ class Karel:NSImageView {
         
         
         let rect =  getCoor.getRealCoordinate(coordinate)
-        
         self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()
+    
+    
     
     func initBlockAndBeeper() {                         //cxxxxxx{}=======> 如果要创建地图则在这里修改坐标即可！××××××××
         let initBlock = [(9,0), (8,0),(9,1), (8,1)]     //这里创建墙壁，两个整形的元组代表墙壁的坐标（x，y）～
@@ -71,14 +74,15 @@ class Karel:NSImageView {
         }
     }//End of initkarel
     
-}
+}//Karel 结束
 
-extension Karel {
-    //    这里是动作方法实现
+
+
+extension Karel {       //    这里把你写好的动作转换成静态的状态存到数组当中去。
     
     
-    func move() {                                       //karel根据当前方向前进，妈蛋这个方法坑了爹好久………………
-        var b = false                                   //添加了一个是否被墙的状态
+    func move() {          //karel根据当前方向前进，妈蛋这个方法坑了爹好久………………
+        var b = false       //添加了一个是否被墙的状态
         
         switch direction {
             case .east where coordinate.x < 10 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
@@ -93,15 +97,15 @@ extension Karel {
                 b = true
         }
 
-        
+//        把一个状态压入数组
         let s = Stat(coordinate: coordinate, blocked: b)
         karelStat.append(s)
         
-        
     } //End of move()
     
-    func turnLeft() {                                       //karel根据当前方向左转
-        
+    
+    
+    func turnLeft() {         //karel根据当前方向左转
         
         switch self.direction {
             case .east:
@@ -113,17 +117,18 @@ extension Karel {
             case .north:
                 self.direction = .west
         }
-        
-        let s = Stat(direction: direction)
+
+        let s = Stat(direction: direction)//        把状态压入数组
         karelStat.append(s)
         
     }//End of turnLeft
+    
     
     func putBeeper() {
         
         var stat = Stat()
         stat.beeper = 1
-        karelStat.append(stat)
+        karelStat.append(stat)      //把动作压入数组
         
     }//End of putBeeper
     
@@ -131,52 +136,19 @@ extension Karel {
         
         var stat = Stat()
         stat.beeper = -1
-        karelStat.append(stat)
+        karelStat.append(stat)      //把动作压入数组
         
         
-    } //End of pikBeeper
+    } //pikBeeper 结束
     
-}
+}//扩展结束
 
-extension Karel {
-    
-    func isBlocked() -> Bool {                                      //判断当前Karel面向是否block
-        var isBlocked = false
-        
-        switch self.direction {
-        case .east where coordinate.x == 9 || !block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
-            isBlocked = true
-        case .south where coordinate.y == 0 || !block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
-            isBlocked = true
-        case .west where coordinate.x == 0 || !block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
-            isBlocked = true
-        case .north where coordinate.y == 9 || !block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
-            isBlocked = true
-        default:
-            break
-        }
-        
-        return isBlocked
-    }
-    
-    func isBeeperHere() -> Bool {                                   //判断当前坐标下是否有Beeper
-        let be = Int(tmpCoor.x) * 10 + Int(tmpCoor.y)   //将抽象坐标转化为数组的标记
-        return beeperNumCount[be] > 0
-        
-    }}
+extension Karel {           //根据遍历生成好的状态序列。
 
-extension Karel {                                               //根据遍历生成好的状态序列。
-    func toEnd () throws {
-        for stat in karelStat {
-           try checkStat(stat)
-                   }
-        
-        
-    }
     
-    func checkStat (stat:Stat) throws {
+    func checkStat (stat:Stat) throws {     //标记方法是有风险的，撞墙的时候会抛出错误，直接传给 ViewController
         
-        if  let coor = stat.coordinate {
+        if  let coor = stat.coordinate {        //如果状态当中保存了坐标信息就执行
             tmpCoor = coor
             if stat.blocked  {throw Error.duang}
             let  realcoor = stat.getRealCoordinate(coor)
@@ -185,30 +157,23 @@ extension Karel {                                               //根据遍历�
             let y:CGFloat =  realcoor.y
             self.frame = CGRectMake(x, y, 50, 50)
             
-        }
+        }//坐标操作结束
         
-        if let direction = stat.direction {
+        if let direction = stat.direction {     //如果状态当中保存了方向信息就执行
             switch direction {
             case .east:
-                //                        mainQueue.addOperationWithBlock(){
                 self.frameCenterRotation = 0
             case .south:
-                //                        mainQueue.addOperationWithBlock(){
                 self.frameCenterRotation = 270
             case .west:
-                
-                //                        mainQueue.addOperationWithBlock(){
                 self.frameCenterRotation = 180
             case .north:
-                //                        mainQueue.addOperationWithBlock(){
                 self.frameCenterRotation = 90
-                
             }
             
-            
-        }
+        }//方向操作结束
         
-        if let incr = stat.beeper {
+        if let incr = stat.beeper {     //如果状态当中保存了对Beeper的操作就执行
             
             let be = Int(tmpCoor.x) * 10 + Int(tmpCoor.y)
             if (beeperNumCount[be] + incr) >= 0 {
@@ -227,11 +192,7 @@ extension Karel {                                               //根据遍历�
                 
             }
             
-        }
+        }//Beeperc操作结束
         
-    }
-    
-
-   
-    
-}
+    }//checkStat 结束
+}//扩展结束
