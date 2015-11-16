@@ -70,7 +70,10 @@ class ViewController: NSViewController {
         reset.enabled = false
         slider.enabled = true
         stop.enabled = false
-        guard (timer != nil) else { return } //来个守门员，确保如果没有“运行”的话就不需要释放。
+       // guard (timer != nil) else {
+            timer.invalidate()
+        //    return
+      //  } //来个守门员，确保如果没有“运行”的话就不需要释放。
         timer = nil //释放timer实例
         
     }
