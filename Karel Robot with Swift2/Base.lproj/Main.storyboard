@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="15A263e" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8173.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -757,7 +757,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yiY-VK-vO6">
-                                            <rect key="frame" x="0.0" y="198" width="598" height="5"/>
+                                            <rect key="frame" x="0.0" y="198" width="598" height="4"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -813,7 +813,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-E9-dwW">
-                                            <rect key="frame" x="120" y="0.0" width="5" height="498"/>
+                                            <rect key="frame" x="120" y="0.0" width="4" height="498"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -827,7 +827,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="7ZY-HX-jOO">
-                                            <rect key="frame" x="300" y="0.0" width="4" height="498"/>
+                                            <rect key="frame" x="300" y="0.0" width="5" height="498"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -952,12 +952,22 @@
                                     <color key="backgroundColor" red="0.15149857789999999" green="0.42469751830000002" blue="0.1562724885" alpha="1" colorSpace="calibratedRGB"/>
                                 </textFieldCell>
                             </textField>
+                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpq-qE-9CU" userLabel="noBeeper">
+                                <rect key="frame" x="662" y="98" width="118" height="23"/>
+                                <animations/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="找不到 Beeper ！" drawsBackground="YES" id="HAk-Ng-H2p">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="0.66998876770000004" green="0.83295849119999998" blue="0.46401630100000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.94541475789999996" green="0.13263675729999999" blue="0.044164824599999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <animations/>
                     </view>
                     <connections>
                         <outlet property="duang" destination="qh5-Gu-bdv" id="UDB-xB-8hd"/>
                         <outlet property="map" destination="KCU-UV-vBE" id="vwd-dI-xp8"/>
+                        <outlet property="noBeeper" destination="gpq-qE-9CU" id="ObX-sa-N6v"/>
                         <outlet property="programEnd" destination="Vzu-A0-FpU" id="jXO-t2-BcV"/>
                         <outlet property="reset" destination="FsF-mN-VeU" id="lQn-WW-pDi"/>
                         <outlet property="run" destination="a1I-Q5-xf8" id="hwg-a3-qB9"/>

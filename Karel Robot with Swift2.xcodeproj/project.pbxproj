@@ -18,6 +18,19 @@
 		E96018551B6923C100544B27 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018521B6923C100544B27 /* Run.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		E9046D4B1BF9AFC400CA30DF /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = README.md;
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+			script = "";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXContainerItemProxy section */
 		E96018341B6922CB00544B27 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -123,6 +136,7 @@
 				E96018201B6922CB00544B27 /* Resources */,
 			);
 			buildRules = (
+				E9046D4B1BF9AFC400CA30DF /* PBXBuildRule */,
 			);
 			dependencies = (
 			);

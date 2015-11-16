@@ -52,7 +52,6 @@ class Run:Karel {
             turnLeft()
             turnLeft()
         }
-    
         
     
 }

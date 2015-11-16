@@ -17,16 +17,18 @@
 import Cocoa
 
 var karel = Run()   //生成 Karel 的实例
+
 var beeper = [NSImageView](count: 100, repeatedValue: NSImageView()) //虽然很2，但我用这个 Beeper 数组储存 Beeper ……
 var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField()) //这个是用来显示 Beeper 堆叠数量的 Feild ……
 var block = [NSImageView](count: 100, repeatedValue: NSImageView() ) //同样的，用它来储存 Block ……
-var karelStat:[Stat] = [] //这个很重要，用来储存 Karel 机器人整个的每一步状态哟
+//var karelStat:[Stat] = [] //这个很重要，用来储存 Karel 机器人整个的每一步状态哟
 //为了所有的类都能访问到，我用了一堆的全局变量，不要骂我，么么哒。
 
 class ViewController: NSViewController {
-    var step = 0 //储存遍历的进度
-    var timer:NSTimer! //来一个计时器，用于 Karel 自动运行时的速度
-    var slowTime = 0.0 //调整 Karel 速度， 给计时器用
+    
+
+    var timer:NSTimer!
+    var slowTime:Double = 0.6
     var pause = false  //储存是否暂停了自动运行
     
     
@@ -35,6 +37,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var duang: NSTextField!
     @IBOutlet weak var map: NSView!
+    @IBOutlet weak var noBeeper: NSTextField!
     @IBOutlet weak var stop:NSButton!
     @IBOutlet weak var programEnd: NSTextField!
     @IBOutlet weak var stepButton: NSButton!
@@ -48,25 +51,15 @@ class ViewController: NSViewController {
         reset.enabled = true
         
 //        以下算法按照每按一次就手动挡遍历一下 Karel 状态数组
-        if step < karelStat.count {
-            let stat = karelStat[step]
-            do {  try karel.checkStat(stat) } catch {duang.hidden = false}
-            ++step
-        } else {
-            stepButton.enabled = false
-            programEnd.hidden = false
-        }
-        
-        
-        
-        
+        gogogo()
+
     }
     @IBAction func reset(sender: AnyObject) {
         resetWorld()  //重置 Karel 的世界
         karel.beeperNumClean()  //清理 Beeper 的堆叠数量
         karel.initKarel() //重新初始化 Karel ，放到开始的位置当中去。
         karel.initBlockAndBeeper()  //初始化设定好的世界
-        step = 0    //手动挡回到 0 ，重新开始遍历。
+        karel.step = 0    //手动挡回到 0 ，重新开始遍历。
         run.enabled = true
         stepButton.enabled = true
         duang.hidden = true
@@ -88,6 +81,7 @@ class ViewController: NSViewController {
         timer = NSTimer.scheduledTimerWithTimeInterval(slowTime, target: self, selector: "gogogo", userInfo: nil, repeats: true)
         timer.fireDate = NSDate.distantPast() as NSDate
 //        以上创建了计时器并且启动之
+        
         reset.enabled = true
         stop.enabled = true
         stepButton.enabled = false
@@ -96,9 +90,7 @@ class ViewController: NSViewController {
         run.enabled = false
     }
     
-    
-    
-   
+ 
     @IBAction func stop(sender: NSButton) {
         
         if !pause {     //如果没有暂停则暂停计时器
@@ -120,7 +112,7 @@ class ViewController: NSViewController {
     
     @IBAction func speedController(sender: NSSlider) {
 //        取出滑动条的值
-      let a = sender.doubleValue
+        let a = sender.doubleValue
         slowTime = a
     }
     
@@ -133,8 +125,7 @@ class ViewController: NSViewController {
         genWorld()      //初始化beeper、堆叠以及block位置
         karel.initBlockAndBeeper() //根据设定配置Beeper和block
         map.addSubview(karel)       //把 Karel 塞进世界里
-        karel.run()     //先根据你的代码把 Karel 的一系列状态撸出来备用
-       
+        karel.run()     //先根据你的代码把 Karel 的一系列方法撸出来备用
         // Do any additional setup after loading the view.
     }
     
@@ -151,16 +142,27 @@ class ViewController: NSViewController {
     
     
     func gogogo() {     //起了这么个傲娇的名字是因为我懒得起名了😁
-//        主要还是手动挡遍历，按照计时器间隔调用
-        if step < karelStat.count {
-            let stat = karelStat[step]
-            do {  try karel.checkStat(stat) } catch {duang.hidden = false}
-            ++step
-        } else {
+
+        do{
+           try karel.process()
+        } catch Error.eof {
             timer.invalidate()
             programEnd.hidden = false
             stepButton.enabled = false
             stop.enabled = false
+
+        } catch Error.duang {
+            timer.invalidate()
+            duang.hidden = false
+            stepButton.enabled = false
+            stop.enabled = false
+        } catch Error.noBeeper {
+            timer.invalidate()
+            noBeeper.hidden = false
+            stepButton.enabled = false
+            stop.enabled = false
+        } catch {
+            
         }
        
     }
@@ -200,7 +202,7 @@ class ViewController: NSViewController {
     
     
     func resetWorld() {
-//        重新将世界元素恢复如初
+//        上帝啊~~让一切重新来过吧！
         
         for i in 0...99 {
             beeper[i].hidden = true
@@ -217,10 +219,6 @@ class ViewController: NSViewController {
             block[i].hidden = true
             
         }
-        
-
     }
-  
-    
 }
 
