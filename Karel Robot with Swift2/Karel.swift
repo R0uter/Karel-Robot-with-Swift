@@ -118,7 +118,7 @@ extension Karel {       //    这里把你写好的动作转换成静态的状�
             case .north:
                 self.direction = .west
         }
-        switch direction {
+        switch direction {//根据转了的方向更新frame
             case .east:
                 self.frameCenterRotation = 0
             case .south:
@@ -143,7 +143,7 @@ extension Karel {       //    这里把你写好的动作转换成静态的状�
                 beeper[be].hidden = false
                 beeperCount[be].hidden = false
             }
-            //                                最后刷新Beeper的数量显示
+            // 最后刷新Beeper的数量显示
             beeperCount[be].stringValue = "\(beeperNumCount[be])"
     }//End of putBeeper
     
@@ -163,9 +163,9 @@ extension Karel {       //    这里把你写好的动作转换成静态的状�
     
 }//扩展结束
 
-extension Karel {
+extension Karel { //新的实现karel行动的方法
     func process() throws{
-        if step < cmdArr.count {
+        if step < cmdArr.count { //依次执行方法引用
            try cmdArr[step]()
             ++step
         } else {
@@ -173,7 +173,7 @@ extension Karel {
         }
     }
     
-    
+    //包装一下方法名称，给run用。
     func move() {
         cmdArr.append(KarelMove)
     }

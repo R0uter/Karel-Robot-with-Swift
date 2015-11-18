@@ -148,23 +148,23 @@ class ViewController: NSViewController {
 
         do{
            try karel.process()
-        } catch Error.eof {
+        } catch Error.eof { //检查抛出，是否结束
             timer.invalidate()
             programEnd.hidden = false
             stepButton.enabled = false
             stop.enabled = false
 
-        } catch Error.duang {
+        } catch Error.duang {//是否撞墙
             timer.invalidate()
             duang.hidden = false
             stepButton.enabled = false
             stop.enabled = false
-        } catch Error.noBeeper {
+        } catch Error.noBeeper {//是否没有Beeper了
             timer.invalidate()
             noBeeper.hidden = false
             stepButton.enabled = false
             stop.enabled = false
-        } catch {
+        } catch { //要是其他的就这样吧=。=
             
         }
        
