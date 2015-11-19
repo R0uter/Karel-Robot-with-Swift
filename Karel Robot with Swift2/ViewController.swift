@@ -70,10 +70,9 @@ class ViewController: NSViewController {
         reset.enabled = false
         slider.enabled = true
         stop.enabled = false
-       // guard (timer != nil) else {
+        if timer != nil {
             timer.invalidate()
-        //    return
-      //  } //来个守门员，确保如果没有“运行”的话就不需要释放。
+        }
         timer = nil //释放timer实例
         
     }
@@ -149,18 +148,27 @@ class ViewController: NSViewController {
         do{
            try karel.process()
         } catch Error.eof { //检查抛出，是否结束
-            timer.invalidate()
+            if timer != nil {
+                timer.invalidate()
+            }
+            run.enabled = false
             programEnd.hidden = false
             stepButton.enabled = false
             stop.enabled = false
 
         } catch Error.duang {//是否撞墙
-            timer.invalidate()
+            if timer != nil {
+                timer.invalidate()
+            }
+            run.enabled = false
             duang.hidden = false
             stepButton.enabled = false
             stop.enabled = false
         } catch Error.noBeeper {//是否没有Beeper了
-            timer.invalidate()
+            if timer != nil {
+                timer.invalidate()
+            }
+            run.enabled = false
             noBeeper.hidden = false
             stepButton.enabled = false
             stop.enabled = false
