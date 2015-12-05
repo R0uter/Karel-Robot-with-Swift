@@ -27,6 +27,14 @@ class Run:Karel {
 
         move()
         
+        move()
+        move()
+        turnLeft()
+        while !isBlocked() {
+            move()
+        }
+        putBeeper()
+        
         
         
         

@@ -60,7 +60,7 @@ class Karel:NSImageView {
     
     
     func initBlockAndBeeper() {                         //cxxxxxx{}=======> 如果要创建地图则在这里修改坐标即可！××××××××
-        let initBlock = [(9,0), (8,0),(9,1), (8,1)]     //这里创建墙壁，两个整形的元组代表墙壁的坐标（x，y）～
+        let initBlock = [(6,5), (5,5),(4,5), (3,5)]     //这里创建墙壁，两个整形的元组代表墙壁的坐标（x，y）～
         for (x,y) in initBlock {
             let be = Int(x) * 10 + Int(y)
             block[be].hidden = false
@@ -90,7 +90,7 @@ extension Karel {
             break
         case .west where coordinate.x - 1 > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
             break
-        case .north where coordinate.y + 1 < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+        case .north where coordinate.y - 1 < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
             break
         default:
             b = true
@@ -284,7 +284,7 @@ extension Karel { //新的实现karel行动的方法
         if backgroundQueue.suspended {
             return true
         }
-       // check()
+        check()
         if backgroundQueue.suspended {
             return true
         }
@@ -295,7 +295,7 @@ extension Karel { //新的实现karel行动的方法
         if backgroundQueue.suspended {
             return true
         }
-        //check()
+        check()
         if backgroundQueue.suspended {
             return true
         }
