@@ -813,7 +813,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-E9-dwW">
-                                            <rect key="frame" x="120" y="0.0" width="4" height="498"/>
+                                            <rect key="frame" x="120" y="0.0" width="5" height="498"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -848,7 +848,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ymA-8B-3R4">
-                                            <rect key="frame" x="420" y="0.0" width="5" height="498"/>
+                                            <rect key="frame" x="420" y="0.0" width="4" height="498"/>
                                             <animations/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -878,7 +878,7 @@
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJT-id-3cz">
                                 <rect key="frame" x="31" y="30" width="604" height="25"/>
                                 <animations/>
-                                <sliderCell key="cell" alignment="left" maxValue="1" doubleValue="0.20000000000000001" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Fb8-hL-6Qd"/>
+                                <sliderCell key="cell" alignment="left" minValue="0.10000000000000001" maxValue="1.1000000000000001" doubleValue="0.20000000000000001" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Fb8-hL-6Qd"/>
                                 <connections>
                                     <action selector="speedController:" target="XfG-lQ-9wD" id="x7p-vy-Qiq"/>
                                 </connections>
