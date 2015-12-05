@@ -17,7 +17,7 @@ class Karel:NSImageView {
     private var getCoor = Coordinate()      //用来换算真实坐标的
     private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
     private var tmpDire:Direction = .east       //临时方向，用途如上
-    private var cmdArr:[()throws ->()] = []    //储存命令序列
+  //  private var cmdArr:[()throws ->()] = []    //储存命令序列
     var step = 0 //储存遍历的进度
     
     
@@ -80,19 +80,48 @@ class Karel:NSImageView {
 
 
 
-extension Karel {       //    这里把你写好的动作转换成静态的状态存到数组当中去。
+extension Karel {
+    func karelIsBlocked() ->Bool {
+        var b = false
+        switch direction {
+        case .east where coordinate.x + 1 < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
+            break
+        case .south where coordinate.y - 1 > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
+            break
+        case .west where coordinate.x - 1 > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
+            break
+        case .north where coordinate.y + 1 < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+            break
+        default:
+            b = true
+        }
+        return b
+        
+    }
+    
+    func karelIsBeeperHere() ->Bool {
+        
+        let be = Int(coordinate.x) * 10 + Int(coordinate.y)
+        var b = false
+        if self.beeperNumCount[be]  >= 0 {
+            b = true
+            }
+        return b    
+    }
     
     
     func KarelMove() throws{          //karel根据当前方向前进，妈蛋这个方法坑了爹好久………………
-
+        
+        
+        
         switch direction {
-            case .east where coordinate.x < 10 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
+            case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
                 coordinate.x += 1
             case .south where coordinate.y > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
                 coordinate.y -= 1
             case .west where coordinate.x > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
                 coordinate.x -= 1
-            case .north where coordinate.y < 10 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+            case .north where coordinate.y < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
                 coordinate.y += 1
             default:
                 throw Error.duang
@@ -101,13 +130,14 @@ extension Karel {       //    这里把你写好的动作转换成静态的状�
         
         let x:CGFloat = realcoor.x
         let y:CGFloat =  realcoor.y
+       
         self.frame = CGRectMake(x, y, 50, 50)
-        
+           
     } //End of move()
     
     
     
-    func KarelTurnLeft() throws{         //karel根据当前方向左转
+    func KarelTurnLeft(){         //karel根据当前方向左转
         switch self.direction {
             case .east:
                 self.direction = .north
@@ -118,7 +148,8 @@ extension Karel {       //    这里把你写好的动作转换成静态的状�
             case .north:
                 self.direction = .west
         }
-        switch direction {//根据转了的方向更新frame
+       
+        switch self.direction {//根据转了的方向更新frame
             case .east:
                 self.frameCenterRotation = 0
             case .south:
@@ -128,62 +159,147 @@ extension Karel {       //    这里把你写好的动作转换成静态的状�
             case .north:
                 self.frameCenterRotation = 90
         }
+        
 
-
+    
         
     }//End of turnLeft
     
     
-    func KarelPutBeeper() throws {
+    func KarelPutBeeper() {
         
         let be = Int(coordinate.x) * 10 + Int(coordinate.y)
-        if (beeperNumCount[be] + 1) >= 0 {
-            beeperNumCount[be] += 1
+    //    mainQueue.addOperationWithBlock() {
+        if (self.beeperNumCount[be] + 1) >= 0 {
+            self.beeperNumCount[be] += 1
              //如果没有则放置Beeper
                 beeper[be].hidden = false
                 beeperCount[be].hidden = false
             }
             // 最后刷新Beeper的数量显示
-            beeperCount[be].stringValue = "\(beeperNumCount[be])"
+            beeperCount[be].stringValue = "\(self.beeperNumCount[be])"
+        //}
+        
     }//End of putBeeper
     
     func KarelPickBeeper()  throws {
 
         let be = Int(coordinate.x) * 10 + Int(coordinate.y)
-        if (beeperNumCount[be] - 1) >= 0 {
-            beeperNumCount[be] -= 1
-            if beeperNumCount[be] == 0 {                        //如果没有则放置Beeper
+        
+        if (self.beeperNumCount[be] - 1) >= 0 {
+            self.beeperNumCount[be] -= 1
+            if self.beeperNumCount[be] == 0 {
                 beeper[be].hidden = true
                 beeperCount[be].hidden = true
             }
+        } else {
+            throw Error.noBeeper
         }
-            //                                最后刷新Beeper的数量显示
-            beeperCount[be].stringValue = "\(beeperNumCount[be])"      
+            //最后刷新Beeper的数量显示
+            beeperCount[be].stringValue = "\(self.beeperNumCount[be])"
+        
+        
     } //pikBeeper 结束
     
 }//扩展结束
 
 extension Karel { //新的实现karel行动的方法
-    func process() throws{
-        if step < cmdArr.count { //依次执行方法引用
-           try cmdArr[step]()
-            ++step
-        } else {
-            throw Error.eof
+    func check() {
+        
+        while isPaused {
+            NSThread.sleepForTimeInterval(0.5)
         }
+        NSThread.sleepForTimeInterval(slowTime)
     }
-    
+   
     //包装一下方法名称，给run用。
     func move() {
-        cmdArr.append(KarelMove)
+        
+        if backgroundQueue.suspended {
+            return
+        }
+        check()
+        if backgroundQueue.suspended {
+            return
+        }
+                mainQueue.addOperationWithBlock(){
+       
+            do {
+            try self.KarelMove()
+            } catch Error.duang {
+                error.setError(Error.duang)
+                backgroundQueue.suspended = true
+            } catch {
+                NSLog("move() throws a unknowen eror")
+            }
+        }
     }
     func turnLeft() {
-        cmdArr.append(KarelTurnLeft)
+        if backgroundQueue.suspended {
+            return
+        }
+        check()
+        if backgroundQueue.suspended {
+            return
+        }
+        mainQueue.addOperationWithBlock(){
+        self.KarelTurnLeft()
+        }
     }
     func putBeeper() {
-        cmdArr.append(KarelPutBeeper)
+        if backgroundQueue.suspended {
+            return
+        }
+        check()
+        if backgroundQueue.suspended {
+            return
+        }
+        mainQueue.addOperationWithBlock(){
+        
+         self.KarelPutBeeper()
+        }
     }
     func pickBeeper() {
-        cmdArr.append(KarelPickBeeper)
+        if backgroundQueue.suspended {
+            return
+        }
+        check()
+        if backgroundQueue.suspended {
+            return
+        }
+        mainQueue.addOperationWithBlock(){
+      
+            do {
+                try self.KarelPickBeeper()
+            } catch Error.noBeeper {
+                error.setError(Error.noBeeper)
+                backgroundQueue.suspended = true
+            } catch {
+                NSLog("pickBeeper throws a unknowen eror")
+            }
+
+        }
+    }
+    func isBlocked()->Bool {
+        if backgroundQueue.suspended {
+            return true
+        }
+       // check()
+        if backgroundQueue.suspended {
+            return true
+        }
+        return karelIsBlocked()
+       
+    }
+    func isBeeperHere()->Bool {
+        if backgroundQueue.suspended {
+            return true
+        }
+        //check()
+        if backgroundQueue.suspended {
+            return true
+        }
+        return   karelIsBeeperHere()
+        
     }
 }

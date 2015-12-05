@@ -16,20 +16,10 @@
 
 import Cocoa
 
-var karel = Run()   //生成 Karel 的实例
-
-var beeper = [NSImageView](count: 100, repeatedValue: NSImageView()) //虽然很2，但我用这个 Beeper 数组储存 Beeper ……
-var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField()) //这个是用来显示 Beeper 堆叠数量的 Feild ……
-var block = [NSImageView](count: 100, repeatedValue: NSImageView() ) //同样的，用它来储存 Block ……
-//var karelStat:[Stat] = [] //这个很重要，用来储存 Karel 机器人整个的每一步状态哟
-//为了所有的类都能访问到，我用了一堆的全局变量，不要骂我，么么哒。
-
 class ViewController: NSViewController {
     
-
-    var timer:NSTimer!
-    var slowTime:Double = 0.6
-    var pause = false  //储存是否暂停了自动运行
+    var blocked = 0
+  
     
     
 //    ——————————————一堆按钮杂七杂八
@@ -39,75 +29,63 @@ class ViewController: NSViewController {
     @IBOutlet weak var map: NSView!
     @IBOutlet weak var noBeeper: NSTextField!
     @IBOutlet weak var stop:NSButton!
-    @IBOutlet weak var programEnd: NSTextField!
-    @IBOutlet weak var stepButton: NSButton!
+   
+ 
     @IBOutlet weak var reset: NSButton!
     @IBOutlet weak var run: NSButton!
     
 //    ——————————————————
     
     
-    @IBAction func step(sender: AnyObject) {
-        reset.enabled = true
-        
-//        以下算法按照每按一次就手动挡遍历一下 Karel 状态数组
-        gogogo()
-
-    }
+ 
     @IBAction func reset(sender: AnyObject) {
         resetWorld()  //重置 Karel 的世界
         karel.beeperNumClean()  //清理 Beeper 的堆叠数量
-        karel.initKarel() //重新初始化 Karel ，放到开始的位置当中去。
         karel.initBlockAndBeeper()  //初始化设定好的世界
-        karel.step = 0    //手动挡回到 0 ，重新开始遍历。
+        
         run.enabled = true
-        stepButton.enabled = true
+        isPaused = false
         duang.hidden = true
-        programEnd.hidden = true
-        pause = false
         stop.title = "暂停"
-        stepButton.enabled = true
         reset.enabled = false
         slider.enabled = true
         stop.enabled = false
-        if timer != nil {
-            timer.invalidate()
-        }
-        timer = nil //释放timer实例
+        error.setError(nil)
+        backgroundQueue.suspended = true
+        observerQueue.suspended = true
+        backgroundQueue.waitUntilAllOperationsAreFinished()
+        observerQueue.waitUntilAllOperationsAreFinished()
+        karel.initKarel() //重新初始化 Karel ，放到开始的位置当中去。
         
     }
     
     
     
     @IBAction func run(sender: NSButton) {
-        timer = NSTimer.scheduledTimerWithTimeInterval(slowTime, target: self, selector: "gogogo", userInfo: nil, repeats: true)
-        timer.fireDate = NSDate.distantPast() as NSDate
-//        以上创建了计时器并且启动之
+        backgroundQueue.suspended = false
+        observerQueue.suspended = false
+        gogogo()
         
         reset.enabled = true
         stop.enabled = true
-        stepButton.enabled = false
+       
         slider.enabled = false
-        stepButton.enabled = false
+    
         run.enabled = false
     }
     
  
     @IBAction func stop(sender: NSButton) {
         
-        if !pause {     //如果没有暂停则暂停计时器
+        if !isPaused {     //如果没有暂停则暂停计时器
             stop.title = "继续"
-            stepButton.enabled = true
-            timer.fireDate = NSDate.distantFuture() as NSDate
-            pause = true
-            
+            isPaused = true
+            slider.enabled = true
         } else {        //如果暂停了计时器那么就恢复之
-            stepButton.enabled = false
             stop.title = "暂停"
-            timer.fireDate = NSDate.distantPast() as NSDate
-            pause = false
+            isPaused = false
+            slider.enabled = false
         }
-        
     }
     
     
@@ -127,7 +105,7 @@ class ViewController: NSViewController {
         genWorld()      //初始化beeper、堆叠以及block位置
         karel.initBlockAndBeeper() //根据设定配置Beeper和block
         map.addSubview(karel)       //把 Karel 塞进世界里
-        karel.run()     //先根据你的代码把 Karel 的一系列方法撸出来备用
+      //  karel.run()     //先根据你的代码把 Karel 的一系列方法撸出来备用
         // Do any additional setup after loading the view.
     }
     
@@ -144,40 +122,43 @@ class ViewController: NSViewController {
     
     
     func gogogo() {     //起了这么个傲娇的名字是因为我懒得起名了😁
-
-        do{
-           try karel.process()
-        } catch Error.eof { //检查抛出，是否结束
-            if timer != nil {
-                timer.invalidate()
-            }
-            run.enabled = false
-            programEnd.hidden = false
-            stepButton.enabled = false
-            stop.enabled = false
-
-        } catch Error.duang {//是否撞墙
-            if timer != nil {
-                timer.invalidate()
-            }
-            run.enabled = false
-            duang.hidden = false
-            stepButton.enabled = false
-            stop.enabled = false
-        } catch Error.noBeeper {//是否没有Beeper了
-            if timer != nil {
-                timer.invalidate()
-            }
-            run.enabled = false
-            noBeeper.hidden = false
-            stepButton.enabled = false
-            stop.enabled = false
-        } catch { //要是其他的就这样吧=。=
-            
+        backgroundQueue.addOperationWithBlock { () -> Void in
+            karel.run()
         }
-       
+        observerQueue.addOperationWithBlock(){
+            while (true){
+                if observerQueue.suspended {
+                    return
+                }
+                if let e = error.getError() {
+                    switch e {
+                    case Error.noBeeper:
+                        self.noBeeperH()
+                    case Error.duang:
+                        self.duangH()
+                    
+                    }
+                    break
+                }
+                
+            }
+        }
     }
-    
+    func duangH() {
+        mainQueue.addOperationWithBlock(){
+            self.duang.hidden = false
+            self.run.enabled = false
+            self.stop.enabled = false
+        }
+    }
+    func noBeeperH() {
+        mainQueue.addOperationWithBlock(){
+            self.noBeeper.hidden = false
+            self.run.enabled = false
+            self.stop.enabled = false
+        }
+    }
+
     
     func genWorld() {       //初始化世界元素
         for i in 0...99 {

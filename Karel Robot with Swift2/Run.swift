@@ -10,58 +10,25 @@ class Run:Karel {
     func run() {
 
 /*  ————————————————————————————————————————————————————————————————————————
-        在 run() 函数当中写对 Karel 的操作吧，你可以使用如下四中方法来操作 karel 机器人：
+        在 run() 函数当中写对 Karel 的操作吧，你可以使用如下四种方法来操作 karel 机器人：
             move()
             turnLeft()
             pickBeeper()
             putBeeper()
+        另外，你还有两个功能性的函数可以使用：
+        isBeeperHere()    ←它返回一个布尔值供你判断这里是否有Beeper
+        以及 isBlocked()   ←它返回一个布尔值供你判断Karel是否被挡住了
        不过你也可以自定义其他更多的功能，比如说下边的 turnRight() 函数。
         
         Hope enjoy！
 
 —————————————————————————————————————————————————————————————————————————— */
       
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        move()
-        pickBeeper()
-        pickBeeper()
-        move()
-        turnLeft()
-        move()
-        move()
-        putBeeper()
-        putBeeper()
-        move()
-        move()
-        move()
-        putBeeper()
-        putBeeper()
-        move()
-        turnRight()
-        move()
-        move()
-        move()
-        putBeeper()
-        putBeeper()
+
         move()
         
-            
-}
-        func turnRight() {  //在这里可以声明更多自定义函数！
-            turnLeft()
-            turnLeft()
-            turnLeft()
-        }
         
-    
+        
+        
+    }
 }
