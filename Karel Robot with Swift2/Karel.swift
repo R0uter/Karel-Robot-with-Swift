@@ -84,13 +84,13 @@ extension Karel {
     func karelIsBlocked() ->Bool {
         var b = false
         switch direction {
-        case .east where coordinate.x + 1 < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
+        case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
             break
-        case .south where coordinate.y - 1 > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
+        case .south where coordinate.y > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
             break
-        case .west where coordinate.x - 1 > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
+        case .west where coordinate.x  > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
             break
-        case .north where coordinate.y - 1 < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+        case .north where coordinate.y < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
             break
         default:
             b = true
@@ -103,7 +103,7 @@ extension Karel {
         
         let be = Int(coordinate.x) * 10 + Int(coordinate.y)
         var b = false
-        if self.beeperNumCount[be]  >= 0 {
+        if self.beeperNumCount[be]  > 0 {
             b = true
             }
         return b    
