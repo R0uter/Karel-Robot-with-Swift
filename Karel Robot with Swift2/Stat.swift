@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+
 var karel = Run()   //生成 Karel 的实例
 
 var beeper = [NSImageView](count: 100, repeatedValue: NSImageView()) //虽然很2，但我用这个 Beeper 数组储存 Beeper ……

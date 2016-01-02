@@ -7,10 +7,11 @@
 //
 
 import Foundation
-
+/**
+ *  创建一个用来换算 Karel 苦逼坐标偏移量的结构体（真的需要吗？）
+ *  反正我就是懒得合并了，这样看起来更整洁不是吗？（其实是更乱了吧！）
+ */
 struct Coordinate {
-//创建一个用来换算 Karel 苦逼坐标偏移量的结构体（真的需要吗？）
-//    反正我就是懒得合并了，这样看起来更整洁不是吗？（其实是更乱了吧！）
  
     
      func getRealCoordinate(co:NSPoint)-> NSPoint {

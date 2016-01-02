@@ -17,11 +17,10 @@ class Karel:NSImageView {
     private var getCoor = Coordinate()      //用来换算真实坐标的
     private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
     private var tmpDire:Direction = .east       //临时方向，用途如上
-  //  private var cmdArr:[()throws ->()] = []    //储存命令序列
     var step = 0 //储存遍历的进度
     
-    
-    var getDirection:Direction {                        //这是个getter，我尝试用计算属性来搞定这件事情,用来给坐标换算使用。
+    ///这是个getter，我尝试用计算属性来搞定这件事情,用来给坐标换算使用。
+    var getDirection:Direction {
         get {
             return direction
         }
@@ -50,23 +49,25 @@ class Karel:NSImageView {
             self.frameCenterRotation = 180
             
         }
-        
-        
+
         let rect =  getCoor.getRealCoordinate(coordinate)
         self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()
     
+    /**
+    在这里修改Karel世界的block和beeper初始化数量，是个元组形式。
     
-    
+    - returns: 无返回值
+    */
     func initBlockAndBeeper() {                         //cxxxxxx{}=======> 如果要创建地图则在这里修改坐标即可！××××××××
-        let initBlock = [(6,5), (5,5),(4,5), (3,5)]     //这里创建墙壁，两个整形的元组代表墙壁的坐标（x，y）～
+        let initBlock:[(Int,Int)] = [(3,3),(4,4)]     //这里创建墙壁，两个整形的元组代表墙壁的坐标（x，y）～
         for (x,y) in initBlock {
             let be = Int(x) * 10 + Int(y)
             block[be].hidden = false
         }
         
-        let initBeeper = [(5,0,4), (2,0,3)]            //这里创建Beeper！  三个整形元组，第三个数字是Beeper的堆叠数量！前两个是坐标。
+        let initBeeper:[(Int,Int,Int)] = [(1,1,1),(2,2,8)]            //这里创建Beeper！  三个整形元组，第三个数字是Beeper的堆叠数量！前两个是坐标。
         for (x,y,number) in initBeeper {
             let be = Int(x) * 10 + Int(y)
             beeperNumCount[be] = number
@@ -79,8 +80,13 @@ class Karel:NSImageView {
 }//Karel 结束
 
 
-
+// MARK: - 功能实现部分
 extension Karel {
+    /**
+     判断Karel是否被墙
+     
+     - returns: 返回布尔值true为墙了，false则是没有被阻挡
+     */
     func karelIsBlocked() ->Bool {
         var b = false
         switch direction {
@@ -98,7 +104,11 @@ extension Karel {
         return b
         
     }
-    
+    /**
+     判断Karel脚下有没有beeper
+     
+     - returns: 有就true，没有就false
+     */
     func karelIsBeeperHere() ->Bool {
         
         let be = Int(coordinate.x) * 10 + Int(coordinate.y)
@@ -109,10 +119,11 @@ extension Karel {
         return b    
     }
     
-    
-    func KarelMove() throws{          //karel根据当前方向前进，妈蛋这个方法坑了爹好久………………
-        
-        
+    /**
+    karel根据当前方向前进
+     
+    */
+    func KarelMove() throws{
         
         switch direction {
             case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
@@ -136,8 +147,10 @@ extension Karel {
     } //End of move()
     
     
-    
-    func KarelTurnLeft(){         //karel根据当前方向左转
+    /**
+    karel根据当前方向左转
+    */
+    func KarelTurnLeft(){
         switch self.direction {
             case .east:
                 self.direction = .north
@@ -203,7 +216,8 @@ extension Karel {
     
 }//扩展结束
 
-extension Karel { //新的实现karel行动的方法
+// MARK: - 新的实现karel行动的方法
+extension Karel {
     func check() {
         
         while isPaused {
@@ -212,7 +226,7 @@ extension Karel { //新的实现karel行动的方法
         NSThread.sleepForTimeInterval(slowTime)
     }
    
-    //包装一下方法名称，给run用。
+    ///包装一下方法名称，给run用。
     func move() {
         
         if backgroundQueue.suspended {
