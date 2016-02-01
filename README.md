@@ -1,8 +1,8 @@
 #Karel Robot with Swift 2
 
-使用最新的 Swift 2.1
+使用最新的 Swift 2.2
 ----
-这是我用 Swift 2.1 实现的一个 Karel 机器人，它能够允许你通过`move()` `putbeeper()` `putbeeper()` `turnleft()`这四个命令来控制 Karel 解决各种问题。
+这是我用 Swift 2.2 实现的一个 Karel 机器人，它能够允许你通过`move()` `putBeeper()` `putBeeper()` `turnLeft()`这四个命令来控制 Karel 解决各种问题。
 另外还有`isBlocked()`和`isBeeperHere()`来获得 Karel 的当前状态，，前者是看 Karel 面前是否有墙，后者是看 Karel 脚下是否有 Beeper。
 
 >Karel 其实某种意义上来说就是一个图灵机的模拟器。
@@ -16,6 +16,8 @@
 在 Run.swift 文件当中写好了算法之后，就可以点击`运行`按钮来跑了，如果撞墙，则程序右下角会有红灯提示——这样程序就会提前结束了。
 
 在 Karel 的世界下方，有一个滑动条，在`重置`之后或者`暂停`的时候，你可以滑动它来调节 Karel 的行动速度，默认是个中间值，滑动到最左边则会瞬间显示结果，滑动到最右边则是最慢的状态啦。
+
+在 `Config.swift` 文件中，你可以配置 Karel 的初始化信息，比如 Karel 的初始位置，朝向，还有世界的初始 Beeper 和 Block 位置，十分的方便。你也可以把其他人写好的世界信息直接粘贴导入，再也不用拷贝整个项目了。也不需要在代码里更改，避免了意外毁掉整个程序：）
 
 
 ##再说两句
