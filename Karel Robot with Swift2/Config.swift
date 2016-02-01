@@ -17,8 +17,8 @@ struct Config {
     
     private var direction:Direction = .east
     private var coordinate:NSPoint = NSPoint(x: 0, y: 0)
-    private var initBlock:[(x,y)] = [(3,3),(4,4)]
-    private var initBeeper:[(x,y,number)] = [(1,1,1),(2,2,8)]
+    private var initBlock:[(x,y)] = []
+    private var initBeeper:[(x,y,number)] = []
     /**
      在这里覆盖配置，配置信息写在初始化器里，直接覆盖初始化器即可！
      
