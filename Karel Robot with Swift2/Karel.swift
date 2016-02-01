@@ -17,6 +17,7 @@ class Karel:NSImageView {
     private var getCoor = Coordinate()      //用来换算真实坐标的
     private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
     private var tmpDire:Direction = .east       //临时方向，用途如上
+    private let config = Config()   //加载一堆配置信息
     var step = 0 //储存遍历的进度
     
     ///这是个getter，我尝试用计算属性来搞定这件事情,用来给坐标换算使用。
@@ -32,13 +33,12 @@ class Karel:NSImageView {
         beeperNumCount = [Int](count: 100, repeatedValue: 0)
     }
  
-
     
-   func initKarel() {                                 //初始化一个karel，我懒得写初始化器了，直接写个函数完事。
-        coordinate = NSPoint(x: 0, y: 0)                //设定Karel坐标
-        direction = .east                              //设定初始化Karel方向
-        
-        switch self.direction {                         //根据方向初始化Karel
+    /**
+     根据配置信息初始化 Karel ,配置文件在 Config 结构体里！
+     */
+   func initKarel() {
+        switch config.getDirection {  //根据方向初始化Karel
         case .north:
             self.frameCenterRotation = 90
         case .east:
@@ -47,28 +47,24 @@ class Karel:NSImageView {
             self.frameCenterRotation = 270
         case .west:
             self.frameCenterRotation = 180
-            
         }
-
-        let rect =  getCoor.getRealCoordinate(coordinate)
+    
+        let rect =  getCoor.getRealCoordinate(config.getCoordinate)
         self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()
     
     /**
-    在这里修改Karel世界的block和beeper初始化数量，是个元组形式。
+    Block 和 Beeper 初始化,配置文件在 Config 结构体里！
     
     - returns: 无返回值
     */
-    func initBlockAndBeeper() {                         //cxxxxxx{}=======> 如果要创建地图则在这里修改坐标即可！××××××××
-        let initBlock:[(Int,Int)] = [(3,3),(4,4)]     //这里创建墙壁，两个整形的元组代表墙壁的坐标（x，y）～
-        for (x,y) in initBlock {
+    func initBlockAndBeeper() {
+        for (x,y) in config.getInitBlock {
             let be = Int(x) * 10 + Int(y)
             block[be].hidden = false
         }
-        
-        let initBeeper:[(Int,Int,Int)] = [(1,1,1),(2,2,8)]            //这里创建Beeper！  三个整形元组，第三个数字是Beeper的堆叠数量！前两个是坐标。
-        for (x,y,number) in initBeeper {
+        for (x,y,number) in config.getInitBeeper {
             let be = Int(x) * 10 + Int(y)
             beeperNumCount[be] = number
             beeperCount[be].stringValue = "\(beeperNumCount[be])"
@@ -76,7 +72,6 @@ class Karel:NSImageView {
             beeper[be].hidden = false
         }
     }//End of initkarel
-    
 }//Karel 结束
 
 

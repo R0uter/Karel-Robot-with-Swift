@@ -101,11 +101,10 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        karel.initKarel()     //直接初始化Karel
+        karel.initKarel()     ///直接初始化Karel
         genWorld()      //初始化beeper、堆叠以及block位置
         karel.initBlockAndBeeper() //根据设定配置Beeper和block
         map.addSubview(karel)       //把 Karel 塞进世界里
-      //  karel.run()     //先根据你的代码把 Karel 的一系列方法撸出来备用
         // Do any additional setup after loading the view.
     }
     
@@ -120,8 +119,10 @@ class ViewController: NSViewController {
         }
     }
     
-    
-    func gogogo() {     //起了这么个傲娇的名字是因为我懒得起名了😁
+    /**
+     起了这么个傲娇的名字是因为我懒得起名了😁
+     */
+    func gogogo() {
         backgroundQueue.addOperationWithBlock { () -> Void in
             karel.run()
         }
@@ -159,8 +160,10 @@ class ViewController: NSViewController {
         }
     }
 
-    
-    func genWorld() {       //初始化世界元素
+    /**
+     初始化世界元素
+     */
+    func genWorld() {
         for i in 0...99 {
             beeper[i] = NSImageView()
             beeper[i].frame = CGRectMake(CGFloat( Int(i / 10) * 60 + 5), CGFloat((i % 10) * 50), 50, 50)
@@ -186,15 +189,14 @@ class ViewController: NSViewController {
             block[i].image = NSImage(named: "block")
             block[i].hidden = true
             map.addSubview(block[i])
-            
         }
-
     }
     
     
-    
+    /**
+    上帝啊~~让一切重新来过吧！
+    */
     func resetWorld() {
-//        上帝啊~~让一切重新来过吧！
         
         for i in 0...99 {
             beeper[i].hidden = true

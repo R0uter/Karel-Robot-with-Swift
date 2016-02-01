@@ -23,12 +23,24 @@ let error = ErrorObserver()
 var canceled = false
 
 var slowTime:Double = 0.2
-
-enum Direction {               //创建一个代表karel朝向的枚举。
+/**
+ 代表karel朝向的枚举
+ 
+ - east:  东
+ - south: 南
+ - west:  西
+ - north: 北
+ */
+enum Direction {
     case east,south,west,north
 }//End of Direction
 
+/**
+创建一个错误类型，用来传出撞墙的错误……不知道该放哪，我就扔这里了。
 
-enum Error:ErrorType {      //创建一个错误类型，用来传出撞墙的错误……不知道该放哪，我就扔这里了。
+- duang:    撞墙的错误信号
+- noBeeper: 脚下没有Beeper
+*/
+enum Error:ErrorType {
     case duang,noBeeper
 } //错误类型结束
