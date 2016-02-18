@@ -37,8 +37,9 @@ class Karel:NSImageView {
     /**
      根据配置信息初始化 Karel ,配置文件在 Config 结构体里！
      */
-   func initKarel() {
-        switch config.getDirection {  //根据方向初始化Karel
+    func initKarel() {
+        direction = config.getDirection
+        switch direction {  //根据方向初始化Karel
         case .north:
             self.frameCenterRotation = 90
         case .east:
@@ -48,8 +49,8 @@ class Karel:NSImageView {
         case .west:
             self.frameCenterRotation = 180
         }
-    
-        let rect =  getCoor.getRealCoordinate(config.getCoordinate)
+        coordinate = config.getCoordinate
+        let rect = getCoor.getRealCoordinate(coordinate)
         self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()
