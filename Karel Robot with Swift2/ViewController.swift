@@ -23,6 +23,7 @@ class ViewController: NSViewController {
     
     
 //    ——————————————一堆按钮杂七杂八
+    @IBOutlet weak var configBox: NSBox!
     
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var duang: NSTextField!
@@ -43,6 +44,14 @@ class ViewController: NSViewController {
         karel.beeperNumClean()  //清理 Beeper 的堆叠数量
         karel.initBlockAndBeeper()  //初始化设定好的世界
         
+        
+        error.setError(nil)
+        backgroundQueue.suspended = true
+        observerQueue.suspended = true
+        backgroundQueue.waitUntilAllOperationsAreFinished()
+        observerQueue.waitUntilAllOperationsAreFinished()
+        karel.initKarel() //重新初始化 Karel ，放到开始的位置当中去。
+        
         run.enabled = true
         isPaused = false
         duang.hidden = true
@@ -50,12 +59,6 @@ class ViewController: NSViewController {
         reset.enabled = false
         slider.enabled = true
         stop.enabled = false
-        error.setError(nil)
-        backgroundQueue.suspended = true
-        observerQueue.suspended = true
-        backgroundQueue.waitUntilAllOperationsAreFinished()
-        observerQueue.waitUntilAllOperationsAreFinished()
-        karel.initKarel() //重新初始化 Karel ，放到开始的位置当中去。
         
     }
     
@@ -96,6 +99,15 @@ class ViewController: NSViewController {
         slowTime = a
     }
     
+    @IBAction func coding(sender: NSButton) {
+        if configBox.hidden {
+            configBox.hidden = false
+            sender.title = "关闭！"
+        } else {
+            configBox.hidden = true
+            sender.title = "写代码"
+        }
+    }
     
 
     override func viewDidLoad() {
@@ -123,10 +135,10 @@ class ViewController: NSViewController {
      起了这么个傲娇的名字是因为我懒得起名了😁
      */
     func gogogo() {
-        backgroundQueue.addOperationWithBlock { () -> Void in
+        backgroundQueue.addOperationWithBlock {
             karel.run()
         }
-        observerQueue.addOperationWithBlock(){
+        observerQueue.addOperationWithBlock {
             while (true){
                 if observerQueue.suspended {
                     return

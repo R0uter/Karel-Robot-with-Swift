@@ -15,7 +15,7 @@ class Karel:NSImageView {
     private var coordinate:NSPoint = NSPoint(x: 0, y: 0) //karel 的当前坐标位置
     private var direction:Direction = .east //朝向
     private var getCoor = Coordinate()      //用来换算真实坐标的
-    private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
+  //  private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
     private var tmpDire:Direction = .east       //临时方向，用途如上
     private let config = Config()   //加载一堆配置信息
     var step = 0 //储存遍历的进度
@@ -38,7 +38,8 @@ class Karel:NSImageView {
      根据配置信息初始化 Karel ,配置文件在 Config 结构体里！
      */
    func initKarel() {
-        switch config.getDirection {  //根据方向初始化Karel
+        direction = config.getDirection
+        switch direction {  //根据方向初始化Karel
         case .north:
             self.frameCenterRotation = 90
         case .east:
@@ -48,8 +49,8 @@ class Karel:NSImageView {
         case .west:
             self.frameCenterRotation = 180
         }
-    
-        let rect =  getCoor.getRealCoordinate(config.getCoordinate)
+        coordinate = config.getCoordinate
+        let rect = getCoor.getRealCoordinate(coordinate)
         self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()

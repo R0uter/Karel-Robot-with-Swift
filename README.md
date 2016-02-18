@@ -1,4 +1,10 @@
-#Karel Robot with Swift 2
+#Karel Robot
+
+## Mac AppStore!
+
+是的没错！ Karel Robot 即将会提供一个 MAS 版本，届时你将可以直接从 Mac App Store 上下载它！当然，这个 App **不会免费**。
+
+为什么呢？因为它是开源的，如果你不愿意资助我，你也可以在这里下载源文件自行编译！功能与 MAS 下载的版本完全相同！
 
 使用最新的 Swift 2.2
 ----
