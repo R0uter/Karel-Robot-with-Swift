@@ -2,9 +2,24 @@
 
 ## Mac AppStore!
 
-是的没错！ Karel Robot 即将会提供一个 MAS 版本，届时你将可以直接从 Mac App Store 上下载它！当然，这个 App **不会免费**。
+是的没错！ Karel Robot 即将会提供一个 MAS 版本，届时你将可以直接从 Mac App Store 上下载它！
 
-为什么呢？因为它是开源的，如果你不愿意资助我，你也可以在这里下载源文件自行编译！功能与 MAS 下载的版本完全相同！
+如你所见，目前它还在开发当中，如果你对这个项目感兴趣，欢迎你加入进来！
+
+先 fork 这个项目到你的仓库，然后使用如下命令把项目克隆到你的 Mac 上：
+
+    git clone https://github.com/你的账户名/Karel-Robot-with-Swift2.git
+    cd Karel-Robot-with-Swift2
+    git checkout MAS
+
+然后你就可以开始帮助我进行开发啦！
+
+……
+
+实现了某些功能之后，总之，你 commit 变更到你的仓库，然后就可以向我 pull request 了。
+
+如果不放心，还可以去这个项目的 issuse 页面给我提交一个提醒的 issuse， 我看到之后会尽快进行处理：）
+
 
 Todo:
 --------
