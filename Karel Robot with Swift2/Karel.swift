@@ -37,7 +37,7 @@ class Karel:NSImageView {
      根据配置信息初始化 Karel ,配置文件在 Config 结构体里！
      */
    func initKarel() {
-        direction = config.getDirection
+        direction = config.direction
         switch direction {  //根据方向初始化Karel
         case .north:
             self.frameCenterRotation = 90
@@ -48,7 +48,7 @@ class Karel:NSImageView {
         case .west:
             self.frameCenterRotation = 180
         }
-        coordinate = config.getCoordinate
+        coordinate = config.coordinate
         let rect = getCoor.getRealCoordinate(coordinate)
         self.frame = CGRectMake(rect.x, rect.y, 50, 50)
         self.image = NSImage(named: "karel")
@@ -60,11 +60,11 @@ class Karel:NSImageView {
     - returns: 无返回值
     */
     func initBlockAndBeeper() {
-        for (x,y) in config.getInitBlock {
+        for (x,y) in config.initBlock {
             let be = Int(x) * 10 + Int(y)
             block[be].hidden = false
         }
-        for (x,y,number) in config.getInitBeeper {
+        for (x,y,number) in config.initBeeper {
             let be = Int(x) * 10 + Int(y)
             beeperNumCount[be] = number
             beeperCount[be].stringValue = "\(beeperNumCount[be])"

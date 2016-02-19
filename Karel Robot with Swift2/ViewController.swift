@@ -23,6 +23,9 @@ class ViewController: NSViewController {
     
     
 //    ——————————————一堆按钮杂七杂八
+    @IBOutlet weak var coorY: NSTextField!
+    @IBOutlet weak var coorX: NSTextField!
+    @IBOutlet weak var direcSelect: NSPopUpButton!
     @IBOutlet weak var beeperConfig: NSTextField!
     @IBOutlet weak var blockConfig: NSTextField!
     @IBOutlet weak var configBox: NSBox!
@@ -105,36 +108,48 @@ class ViewController: NSViewController {
         slowTime = a
     }
     
+    /**
+     切换代码配置界面按钮，用来显示代码编辑和世界配置
+     */
     @IBAction func coding(sender: NSButton) {
-        let path = NSBundle.mainBundle().bundlePath + "/Contents/Resources/"
+        let config = Config.getConfig()
         
-        if configBox.hidden {
+        if configBox.hidden {//如果界面是隐藏的就打开
+            let configData = config.getConfigData()[0]
             configBox.hidden = false
+            reset.enabled = false
             sender.title = "完成"
             run.enabled = false
             configTab.selectTabViewItem(configTab.tabViewItemAtIndex(0))
             
-            let blockSetContent = try? String(contentsOfFile: path + "BlockSet",encoding: NSUTF8StringEncoding)
-            let beeperSetContent = try? String(contentsOfFile: path + "BeeperSet", encoding: NSUTF8StringEncoding)
+            
+            let blockSetContent = configData.blockSet
+            let beeperSetContent = configData.beeperSet
             blockConfig.stringValue = blockSetContent!
             beeperConfig.stringValue = beeperSetContent!
+            
+            let coo = configData.pointCoordinate
+            coorX.stringValue = String(Int(Double(coo.x)))
+            coorY.stringValue = String(Int(Double(coo.y)))
+            
+            direcSelect.selectItem(direcSelect.itemWithTitle(configData.chDirection))
 
             
-        } else {
-            configBox.hidden = true
-            sender.title = "写代码"
-            run.enabled = true
+        } else {//如果界面是打开的就隐藏
             
             let blockSetContent = blockConfig.stringValue
             let beeperSetContent = beeperConfig.stringValue
+            let direc = direcSelect.selectedCell()?.title
+            let coor = "\(coorX.stringValue),\(coorY.stringValue)"
+            config.updateConfigData(direction: direc!, coordinate:coor, blockSet: blockSetContent, beeperSet: beeperSetContent)
             
-            try! blockSetContent.writeToFile(path + "BlockSet", atomically: false, encoding: NSUTF8StringEncoding)
-            try! beeperSetContent.writeToFile(path + "BeeperSet", atomically: false, encoding: NSUTF8StringEncoding)
-            let config = Config.getConfig()
-            config.readConfig()
+            config.readConfig()//重新读取配置
             
-            reset(self)
-          
+//            reset(self)//自动点击一下重置按钮
+            reset.enabled = true
+            configBox.hidden = true
+            sender.title = "写代码"
+//            run.enabled = true
   
         }
     }

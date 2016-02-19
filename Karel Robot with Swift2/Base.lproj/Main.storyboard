@@ -665,7 +665,7 @@
                 </windowController>
                 <customObject id="HmP-CH-9mY" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="575" y="-190"/>
+            <point key="canvasLocation" x="573" y="-243"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="NVo-hQ-bHJ">
@@ -713,7 +713,7 @@
                     <window key="window" title="Karel Robot for Swift" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" topStrut="YES"/>
-                        <rect key="contentRect" x="242" y="298" width="800" height="600"/>
+                        <rect key="contentRect" x="371" y="238" width="800" height="600"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -793,7 +793,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="klZ-7y-TEM">
-                                            <rect key="frame" x="60" y="0.0" width="5" height="498"/>
+                                            <rect key="frame" x="60" y="0.0" width="4" height="498"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -805,7 +805,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="HJo-UL-Rho">
-                                            <rect key="frame" x="180" y="0.0" width="4" height="498"/>
+                                            <rect key="frame" x="180" y="0.0" width="5" height="498"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -1106,11 +1106,11 @@
                                             <tabViewItems>
                                                 <tabViewItem label="Karel 代码" identifier="1" id="TuZ-8b-usI">
                                                     <view key="view" id="O1d-hs-m1Y">
-                                                        <rect key="frame" x="10" y="33" width="149" height="0.0"/>
+                                                        <rect key="frame" x="10" y="33" width="613" height="523"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzZ-KE-K6f">
-                                                                <rect key="frame" x="15" y="-56" width="583" height="41"/>
+                                                                <rect key="frame" x="15" y="467" width="583" height="41"/>
                                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="在这里输入 Karel 控制语句，你可以使用 turnLeft() 、 move() 、 putBeeper() 、pickBeeper()" id="aKe-yb-LK4">
                                                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1118,7 +1118,7 @@
                                                                 </textFieldCell>
                                                             </textField>
                                                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-Fy-YQ3">
-                                                                <rect key="frame" x="17" y="-506" width="579" height="442"/>
+                                                                <rect key="frame" x="17" y="17" width="579" height="442"/>
                                                                 <clipView key="contentView" ambiguous="YES" id="wbs-Jg-OaO">
                                                                     <rect key="frame" x="1" y="1" width="577" height="440"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1349,6 +1349,9 @@
                         <outlet property="codeButton" destination="GYM-v7-BfZ" id="Lz9-vT-oHc"/>
                         <outlet property="configBox" destination="PRG-OH-lAR" id="YpY-ui-cVh"/>
                         <outlet property="configTab" destination="mV2-CP-nal" id="dIs-Oi-HN1"/>
+                        <outlet property="coorX" destination="maF-Ti-W01" id="RlI-kt-hk2"/>
+                        <outlet property="coorY" destination="Nn5-Gl-7Fl" id="h9d-fy-7oy"/>
+                        <outlet property="direcSelect" destination="QU5-gj-hRD" id="SAD-Lg-30Z"/>
                         <outlet property="duang" destination="qh5-Gu-bdv" id="UDB-xB-8hd"/>
                         <outlet property="map" destination="KCU-UV-vBE" id="vwd-dI-xp8"/>
                         <outlet property="noBeeper" destination="gpq-qE-9CU" id="ObX-sa-N6v"/>
