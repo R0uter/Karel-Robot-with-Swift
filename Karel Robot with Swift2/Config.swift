@@ -6,11 +6,11 @@
 //  Copyright © 2016年 R0uter. All rights reserved.
 //
 
-import Foundation
+import Cocoa
 /**
  *  在这里设置 Karel 的初始位置信息，比如朝向，比如坐标，比如Beeper和Block。
  */
-struct Config {
+class Config {
     typealias x = Int
     typealias y = Int
     typealias number = Int
@@ -19,6 +19,7 @@ struct Config {
     private var coordinate:NSPoint = NSPoint(x: 0, y: 0)
     private var initBlock:[(x,y)] = []
     private var initBeeper:[(x,y,number)] = []
+    private static var hold:Config?
     /**
      在这里覆盖配置，配置信息写在初始化器里，直接覆盖初始化器即可！
      
@@ -28,11 +29,53 @@ struct Config {
      initBeeper 为初始化Beeper信息，格式为[(x,y,number)]：[(1,1,1),(2,2,8)]
      
      */
-    init () {
+    private init () {
         direction = .east
         coordinate = NSPoint(x: 0, y: 0)
-        initBlock = [(3,3),(4,4)]
-        initBeeper = [(1,1,1),(2,2,8)]
+        readConfig()
+        Config.hold = self
+    }
+    class func getConfig () -> Config {
+        if let config = Config.hold {
+            return config
+        }
+        return Config()
+    }
+    func setBlock (config:String) {
+        
+    }
+    func setBeeper (config:String) {
+      
+        
+    }
+    func readConfig() {
+        initBlock = []
+        initBeeper = []
+        let path = NSBundle.mainBundle().bundlePath + "/Contents/Resources/"
+        let blockSetContent = try? String(contentsOfFile: path + "BlockSet",encoding: NSUTF8StringEncoding)
+        let beeperSetContent = try? String(contentsOfFile: path + "BeeperSet", encoding: NSUTF8StringEncoding)
+        
+        let blockSet:[String] = (blockSetContent?.componentsSeparatedByString("\n").reverse())!
+        let beeperSet:[String] = (beeperSetContent?.componentsSeparatedByString("\n").reverse())!
+        
+        for y in 0...9 {
+            let blockRow = blockSet[y]
+            let beeperRow = beeperSet[y]
+            for x in 0...9 {
+                let index = blockRow.characters.startIndex.advancedBy(x)
+                let n = Int(String(blockRow.characters[index]))!
+                if n != 0 {
+                initBlock.append((x,y))
+                }
+                let bindex = beeperRow.characters.startIndex.advancedBy(x)
+                let bn = Int(String(beeperRow.characters[bindex]))!
+                if bn != 0 {
+                initBeeper.append((x,y,bn))
+                }
+            }
+        }
+        
+        
     }
 }//这里创建Beeper！  三个整形元组，第三个数字是Beeper的堆叠数量！前两个是坐标。
 

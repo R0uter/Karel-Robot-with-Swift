@@ -805,7 +805,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="HJo-UL-Rho">
-                                            <rect key="frame" x="180" y="0.0" width="5" height="498"/>
+                                            <rect key="frame" x="180" y="0.0" width="4" height="498"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -1105,15 +1105,223 @@
                                             <font key="font" metaFont="system"/>
                                             <tabViewItems>
                                                 <tabViewItem label="Karel 代码" identifier="1" id="TuZ-8b-usI">
-                                                    <view key="view" ambiguous="YES" id="O1d-hs-m1Y">
-                                                        <rect key="frame" x="10" y="33" width="613" height="523"/>
+                                                    <view key="view" id="O1d-hs-m1Y">
+                                                        <rect key="frame" x="10" y="33" width="149" height="0.0"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzZ-KE-K6f">
+                                                                <rect key="frame" x="15" y="-56" width="583" height="41"/>
+                                                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="在这里输入 Karel 控制语句，你可以使用 turnLeft() 、 move() 、 putBeeper() 、pickBeeper()" id="aKe-yb-LK4">
+                                                                    <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9o-Fy-YQ3">
+                                                                <rect key="frame" x="17" y="-506" width="579" height="442"/>
+                                                                <clipView key="contentView" ambiguous="YES" id="wbs-Jg-OaO">
+                                                                    <rect key="frame" x="1" y="1" width="577" height="440"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textView ambiguous="YES" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="m0Q-c7-TMf">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="577" height="440"/>
+                                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                            <size key="minSize" width="577" height="440"/>
+                                                                            <size key="maxSize" width="579" height="10000000"/>
+                                                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                            <size key="minSize" width="577" height="440"/>
+                                                                            <size key="maxSize" width="579" height="10000000"/>
+                                                                        </textView>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                </clipView>
+                                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="9xN-AN-Fms">
+                                                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </scroller>
+                                                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="XI2-cQ-jJQ">
+                                                                    <rect key="frame" x="562" y="1" width="16" height="440"/>
+                                                                    <autoresizingMask key="autoresizingMask"/>
+                                                                </scroller>
+                                                            </scrollView>
+                                                        </subviews>
                                                     </view>
                                                 </tabViewItem>
                                                 <tabViewItem label="世界配置" identifier="2" id="WHU-qv-KjD">
-                                                    <view key="view" id="UqC-IZ-XvB">
+                                                    <view key="view" ambiguous="YES" id="UqC-IZ-XvB" customClass="SetWorld" customModule="Karel_Robot_with_Swift2" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="33" width="613" height="523"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        <subviews>
+                                                            <box fixedFrame="YES" title="初始坐标" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="9Xl-ON-gW9">
+                                                                <rect key="frame" x="6" y="409" width="264" height="106"/>
+                                                                <view key="contentView" id="14p-UI-lTl">
+                                                                    <rect key="frame" x="1" y="1" width="262" height="90"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maF-Ti-W01">
+                                                                            <rect key="frame" x="41" y="53" width="46" height="22"/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="VFg-PO-g9C">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nn5-Gl-7Fl">
+                                                                            <rect key="frame" x="41" y="21" width="46" height="22"/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0" drawsBackground="YES" id="o8m-4H-ZWj">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uwb-4q-S5Y">
+                                                                            <rect key="frame" x="18" y="55" width="17" height="17"/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X:" id="IVh-eY-c2F">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qn2-dm-OSX">
+                                                                            <rect key="frame" x="18" y="24" width="16" height="17"/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Y:" id="0dz-ED-JKH">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Id-Ir-5gd">
+                                                                            <rect key="frame" x="105" y="24" width="148" height="51"/>
+                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karel 的初始坐标位置，默认为左下角，即： x：0 ；y：0" id="cLi-Qy-vCd">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                </view>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </box>
+                                                            <box fixedFrame="YES" title="初始朝向" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="b3v-oj-9pa">
+                                                                <rect key="frame" x="343" y="409" width="256" height="106"/>
+                                                                <view key="contentView" id="g3U-OH-V42">
+                                                                    <rect key="frame" x="1" y="1" width="254" height="90"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="obd-Js-fbw">
+                                                                            <rect key="frame" x="8" y="4" width="239" height="45"/>
+                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karel 的初始朝向位置，东南西北对应上下左右，默认为朝东，即朝右方向。" id="WHN-BL-XxQ">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QU5-gj-hRD" userLabel="Direction">
+                                                                            <rect key="frame" x="8" y="54" width="92" height="26"/>
+                                                                            <popUpButtonCell key="cell" type="push" title="朝东" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="bh4-Fl-aW8" id="yhi-ER-fSH">
+                                                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="menu"/>
+                                                                                <menu key="menu" id="6nh-Iy-lY0">
+                                                                                    <items>
+                                                                                        <menuItem title="朝东" state="on" id="bh4-Fl-aW8">
+                                                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                        </menuItem>
+                                                                                        <menuItem title="朝南" id="f3N-MG-7dq">
+                                                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                        </menuItem>
+                                                                                        <menuItem title="朝西" id="dT4-j0-tE2">
+                                                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                        </menuItem>
+                                                                                        <menuItem title="朝北" id="RuL-Do-nnc">
+                                                                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                                                                        </menuItem>
+                                                                                    </items>
+                                                                                </menu>
+                                                                            </popUpButtonCell>
+                                                                        </popUpButton>
+                                                                    </subviews>
+                                                                </view>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </box>
+                                                            <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="OcH-x3-eQM">
+                                                                <rect key="frame" x="17" y="387" width="579" height="5"/>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <font key="titleFont" metaFont="system"/>
+                                                            </box>
+                                                            <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="MpA-xH-WR0">
+                                                                <rect key="frame" x="304" y="413" width="5" height="96"/>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <font key="titleFont" metaFont="system"/>
+                                                            </box>
+                                                            <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NnV-yw-bo1">
+                                                                <rect key="frame" x="304" y="17" width="5" height="345"/>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <font key="titleFont" metaFont="system"/>
+                                                            </box>
+                                                            <box fixedFrame="YES" title="Block 设置" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="JCX-Cv-uMV">
+                                                                <rect key="frame" x="6" y="13" width="289" height="349"/>
+                                                                <view key="contentView" id="kSN-eT-7BZ">
+                                                                    <rect key="frame" x="1" y="1" width="287" height="333"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0B-JW-tjH">
+                                                                            <rect key="frame" x="131" y="20" width="136" height="293"/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000" placeholderString="在这里输入 Block 的配置" drawsBackground="YES" id="MRU-n8-MpA">
+                                                                                <font key="font" size="22" name="Helvetica"/>
+                                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                <allowedInputSourceLocales>
+                                                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                                                </allowedInputSourceLocales>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qts-G2-Vj2">
+                                                                            <rect key="frame" x="7" y="109" width="118" height="204"/>
+                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karel 世界的初始 Block 设置  用0和1来表示： 0 表示无 Block； 1  表示有 Block；  阵列为10x10，正好对应 Karel 世界的坐标  左下为0x0" id="27i-i7-CbS">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                </view>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </box>
+                                                            <box fixedFrame="YES" title="Beeper 设置" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="A09-Zn-wDV">
+                                                                <rect key="frame" x="318" y="13" width="281" height="349"/>
+                                                                <view key="contentView" id="S69-81-fcI">
+                                                                    <rect key="frame" x="1" y="1" width="279" height="333"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                    <subviews>
+                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Ns-cfE">
+                                                                            <rect key="frame" x="126" y="18" width="136" height="295"/>
+                                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000" placeholderString="在这里输入 Beeper 的配置" drawsBackground="YES" id="Hh5-a2-f9J">
+                                                                                <font key="font" size="22" name="Helvetica"/>
+                                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dyi-zx-Cna">
+                                                                            <rect key="frame" x="12" y="20" width="114" height="293"/>
+                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karel 世界里的初始 Beeper，用阵列表示，左下角对应坐标为 0x0  用数字表示 Beeper 的数量：  如果是 0 则不显示； 大于 0 则显示为堆叠数量。" id="te8-jf-bmg">
+                                                                                <font key="font" metaFont="system"/>
+                                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                            </textFieldCell>
+                                                                        </textField>
+                                                                    </subviews>
+                                                                </view>
+                                                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </box>
+                                                        </subviews>
                                                     </view>
                                                 </tabViewItem>
                                             </tabViewItems>
@@ -1136,7 +1344,11 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="beeperConfig" destination="jg6-Ns-cfE" id="9OK-mY-4mW"/>
+                        <outlet property="blockConfig" destination="s0B-JW-tjH" id="Jrz-5Q-UBu"/>
+                        <outlet property="codeButton" destination="GYM-v7-BfZ" id="Lz9-vT-oHc"/>
                         <outlet property="configBox" destination="PRG-OH-lAR" id="YpY-ui-cVh"/>
+                        <outlet property="configTab" destination="mV2-CP-nal" id="dIs-Oi-HN1"/>
                         <outlet property="duang" destination="qh5-Gu-bdv" id="UDB-xB-8hd"/>
                         <outlet property="map" destination="KCU-UV-vBE" id="vwd-dI-xp8"/>
                         <outlet property="noBeeper" destination="gpq-qE-9CU" id="ObX-sa-N6v"/>

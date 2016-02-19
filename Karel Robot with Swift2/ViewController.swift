@@ -23,7 +23,11 @@ class ViewController: NSViewController {
     
     
 //    ——————————————一堆按钮杂七杂八
+    @IBOutlet weak var beeperConfig: NSTextField!
+    @IBOutlet weak var blockConfig: NSTextField!
     @IBOutlet weak var configBox: NSBox!
+    @IBOutlet weak var configTab: NSTabView!
+    @IBOutlet weak var codeButton: NSButton!
     
     @IBOutlet weak var slider: NSSlider!
     @IBOutlet weak var duang: NSTextField!
@@ -59,6 +63,7 @@ class ViewController: NSViewController {
         reset.enabled = false
         slider.enabled = true
         stop.enabled = false
+        codeButton.enabled = true
         
     }
     
@@ -68,13 +73,12 @@ class ViewController: NSViewController {
         backgroundQueue.suspended = false
         observerQueue.suspended = false
         gogogo()
-        
+       
         reset.enabled = true
         stop.enabled = true
-       
         slider.enabled = false
-    
         run.enabled = false
+        codeButton.enabled = false
     }
     
  
@@ -84,10 +88,12 @@ class ViewController: NSViewController {
             stop.title = "继续"
             isPaused = true
             slider.enabled = true
+            
         } else {        //如果暂停了计时器那么就恢复之
             stop.title = "暂停"
             isPaused = false
             slider.enabled = false
+            
         }
     }
     
@@ -100,12 +106,36 @@ class ViewController: NSViewController {
     }
     
     @IBAction func coding(sender: NSButton) {
+        let path = NSBundle.mainBundle().bundlePath + "/Contents/Resources/"
+        
         if configBox.hidden {
             configBox.hidden = false
-            sender.title = "关闭！"
+            sender.title = "完成"
+            run.enabled = false
+            configTab.selectTabViewItem(configTab.tabViewItemAtIndex(0))
+            
+            let blockSetContent = try? String(contentsOfFile: path + "BlockSet",encoding: NSUTF8StringEncoding)
+            let beeperSetContent = try? String(contentsOfFile: path + "BeeperSet", encoding: NSUTF8StringEncoding)
+            blockConfig.stringValue = blockSetContent!
+            beeperConfig.stringValue = beeperSetContent!
+
+            
         } else {
             configBox.hidden = true
             sender.title = "写代码"
+            run.enabled = true
+            
+            let blockSetContent = blockConfig.stringValue
+            let beeperSetContent = beeperConfig.stringValue
+            
+            try! blockSetContent.writeToFile(path + "BlockSet", atomically: false, encoding: NSUTF8StringEncoding)
+            try! beeperSetContent.writeToFile(path + "BeeperSet", atomically: false, encoding: NSUTF8StringEncoding)
+            let config = Config.getConfig()
+            config.readConfig()
+            
+            reset(self)
+          
+  
         }
     }
     

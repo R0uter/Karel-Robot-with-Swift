@@ -15,9 +15,8 @@ class Karel:NSImageView {
     private var coordinate:NSPoint = NSPoint(x: 0, y: 0) //karel 的当前坐标位置
     private var direction:Direction = .east //朝向
     private var getCoor = Coordinate()      //用来换算真实坐标的
-  //  private var tmpCoor = NSPoint()     //用来撸状态时串联坐标用的临时变量
     private var tmpDire:Direction = .east       //临时方向，用途如上
-    private let config = Config()   //加载一堆配置信息
+    private let config = Config.getConfig()   //加载一堆配置信息
     var step = 0 //储存遍历的进度
     
     ///这是个getter，我尝试用计算属性来搞定这件事情,用来给坐标换算使用。

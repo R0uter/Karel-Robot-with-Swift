@@ -11,6 +11,9 @@
 		E922E0671C5F3FDB00A592E8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E922E0661C5F3FDB00A592E8 /* Config.swift */; };
 		E94528361B6E7B7100F3ADD7 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94528351B6E7B7100F3ADD7 /* Stat.swift */; };
 		E94528381B6E84A100F3ADD7 /* Karel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94528371B6E84A100F3ADD7 /* Karel.swift */; };
+		E957E5911C7702EC00AB452B /* BeeperSet in Resources */ = {isa = PBXBuildFile; fileRef = E957E5901C7702EC00AB452B /* BeeperSet */; };
+		E957E5931C77030800AB452B /* BlockSet in Resources */ = {isa = PBXBuildFile; fileRef = E957E5921C77030800AB452B /* BlockSet */; };
+		E957E5951C7703D300AB452B /* Code in Resources */ = {isa = PBXBuildFile; fileRef = E957E5941C7703D300AB452B /* Code */; };
 		E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018251B6922CB00544B27 /* AppDelegate.swift */; };
 		E96018281B6922CB00544B27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96018271B6922CB00544B27 /* ViewController.swift */; };
 		E960182A1B6922CB00544B27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96018291B6922CB00544B27 /* Assets.xcassets */; };
@@ -55,6 +58,9 @@
 		E922E0661C5F3FDB00A592E8 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E94528351B6E7B7100F3ADD7 /* Stat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		E94528371B6E84A100F3ADD7 /* Karel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Karel.swift; sourceTree = "<group>"; };
+		E957E5901C7702EC00AB452B /* BeeperSet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BeeperSet; sourceTree = "<group>"; };
+		E957E5921C77030800AB452B /* BlockSet */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BlockSet; sourceTree = "<group>"; };
+		E957E5941C7703D300AB452B /* Code */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Code; sourceTree = "<group>"; };
 		E96018221B6922CB00544B27 /* Karel Robot with Swift2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Karel Robot with Swift2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96018251B6922CB00544B27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E96018271B6922CB00544B27 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +128,9 @@
 				E96018501B6923C100544B27 /* Coordinate.swift */,
 				E94528371B6E84A100F3ADD7 /* Karel.swift */,
 				E922E0661C5F3FDB00A592E8 /* Config.swift */,
+				E957E5941C7703D300AB452B /* Code */,
+				E957E5901C7702EC00AB452B /* BeeperSet */,
+				E957E5921C77030800AB452B /* BlockSet */,
 				E96700931C12B5B5006A8D40 /* Observer.swift */,
 				E94528351B6E7B7100F3ADD7 /* Stat.swift */,
 				E96018521B6923C100544B27 /* Run.swift */,
@@ -234,8 +243,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E957E5911C7702EC00AB452B /* BeeperSet in Resources */,
 				E960182A1B6922CB00544B27 /* Assets.xcassets in Resources */,
+				E957E5951C7703D300AB452B /* Code in Resources */,
 				E960182D1B6922CB00544B27 /* Main.storyboard in Resources */,
+				E957E5931C77030800AB452B /* BlockSet in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
