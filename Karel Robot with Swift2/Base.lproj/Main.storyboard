@@ -739,7 +739,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="K28-Lq-dop">
-                                            <rect key="frame" x="0.0" y="48" width="598" height="5"/>
+                                            <rect key="frame" x="0.0" y="48" width="598" height="4"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -757,7 +757,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="6QY-Od-bLS">
-                                            <rect key="frame" x="0.0" y="248" width="598" height="5"/>
+                                            <rect key="frame" x="0.0" y="248" width="598" height="4"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -793,7 +793,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="klZ-7y-TEM">
-                                            <rect key="frame" x="60" y="0.0" width="4" height="498"/>
+                                            <rect key="frame" x="60" y="0.0" width="5" height="498"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -835,7 +835,7 @@
                                             <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ETZ-cm-GLP">
-                                            <rect key="frame" x="480" y="0.0" width="5" height="498"/>
+                                            <rect key="frame" x="480" y="0.0" width="4" height="498"/>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="system"/>
@@ -1149,7 +1149,7 @@
                                                     </view>
                                                 </tabViewItem>
                                                 <tabViewItem label="世界配置" identifier="2" id="WHU-qv-KjD">
-                                                    <view key="view" ambiguous="YES" id="UqC-IZ-XvB" customClass="SetWorld" customModule="Karel_Robot_with_Swift2" customModuleProvider="target">
+                                                    <view key="view" ambiguous="YES" id="UqC-IZ-XvB">
                                                         <rect key="frame" x="10" y="33" width="613" height="523"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
@@ -1165,6 +1165,9 @@
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                <allowedInputSourceLocales>
+                                                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                                                </allowedInputSourceLocales>
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nn5-Gl-7Fl">
@@ -1173,6 +1176,9 @@
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                <allowedInputSourceLocales>
+                                                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                                                </allowedInputSourceLocales>
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uwb-4q-S5Y">
@@ -1192,8 +1198,8 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Id-Ir-5gd">
-                                                                            <rect key="frame" x="105" y="24" width="148" height="51"/>
-                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karel 的初始坐标位置，默认为左下角，即： x：0 ；y：0" id="cLi-Qy-vCd">
+                                                                            <rect key="frame" x="103" y="11" width="148" height="68"/>
+                                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karel 的初始坐标位置，默认为左下角，即： x：0 ；y：0 注意：坐标值为 0 - 9" id="cLi-Qy-vCd">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1259,7 +1265,7 @@
                                                                 <font key="titleFont" metaFont="system"/>
                                                             </box>
                                                             <box horizontalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="NnV-yw-bo1">
-                                                                <rect key="frame" x="304" y="17" width="5" height="345"/>
+                                                                <rect key="frame" x="304" y="17" width="4" height="345"/>
                                                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <font key="titleFont" metaFont="system"/>
@@ -1270,10 +1276,10 @@
                                                                     <rect key="frame" x="1" y="1" width="287" height="333"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0B-JW-tjH">
+                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0B-JW-tjH" customClass="TextField" customModule="Karel_Robot_with_Swift2" customModuleProvider="target">
                                                                             <rect key="frame" x="131" y="20" width="136" height="293"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000" placeholderString="在这里输入 Block 的配置" drawsBackground="YES" id="MRU-n8-MpA">
-                                                                                <font key="font" size="22" name="Helvetica"/>
+                                                                                <font key="font" size="22" name="HelveticaNeue-Light"/>
                                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                 <allowedInputSourceLocales>
@@ -1300,10 +1306,10 @@
                                                                     <rect key="frame" x="1" y="1" width="279" height="333"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Ns-cfE">
+                                                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jg6-Ns-cfE" customClass="TextField" customModule="Karel_Robot_with_Swift2" customModuleProvider="target">
                                                                             <rect key="frame" x="126" y="18" width="136" height="295"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000 0000000000" placeholderString="在这里输入 Beeper 的配置" drawsBackground="YES" id="Hh5-a2-f9J">
-                                                                                <font key="font" size="22" name="Helvetica"/>
+                                                                                <font key="font" size="22" name="HelveticaNeue-Light"/>
                                                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -1341,6 +1347,14 @@
                                     <action selector="coding:" target="XfG-lQ-9wD" id="bOM-cE-CKl"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WP3-8n-kvH">
+                                <rect key="frame" x="662" y="57" width="118" height="23"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="配置格式错误！" drawsBackground="YES" id="G4K-DY-4Ne">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="0.66998876770000004" green="0.83295849119999998" blue="0.46401630100000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.94541475789999996" green="0.13263675729999999" blue="0.044164824599999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -1348,6 +1362,7 @@
                         <outlet property="blockConfig" destination="s0B-JW-tjH" id="Jrz-5Q-UBu"/>
                         <outlet property="codeButton" destination="GYM-v7-BfZ" id="Lz9-vT-oHc"/>
                         <outlet property="configBox" destination="PRG-OH-lAR" id="YpY-ui-cVh"/>
+                        <outlet property="configErr" destination="WP3-8n-kvH" id="RXW-Pq-IIr"/>
                         <outlet property="configTab" destination="mV2-CP-nal" id="dIs-Oi-HN1"/>
                         <outlet property="coorX" destination="maF-Ti-W01" id="RlI-kt-hk2"/>
                         <outlet property="coorY" destination="Nn5-Gl-7Fl" id="h9d-fy-7oy"/>

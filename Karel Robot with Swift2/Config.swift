@@ -142,7 +142,17 @@ extension Config {
      - parameter blockSet:   block setting in String
      - parameter beeperSet:  beeper setting in String
      */
-    func updateConfigData (direction direction:String,coordinate:String,blockSet:String,beeperSet:String) {
+    func updateConfigData (direction direction:String,coordinate:String,blockSet:String,beeperSet:String) throws {
+        
+        let configReg = "^(\\d{10}\\n){9}\\d{10}$"
+        let coorReg = "^\\d,\\d$"
+        
+        guard blockSet =~ configReg && beeperSet =~ configReg else {
+            throw Error.configError
+        }
+        guard coordinate =~ coorReg else {
+            throw Error.configError
+        }
         
         let configData = getConfigData()[0]
         

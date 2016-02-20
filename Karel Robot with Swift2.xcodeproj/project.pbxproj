@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E9006C7C1B8A203B00372B69 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E9006C7B1B8A203B00372B69 /* README.md */; };
+		E90295441C78532E0073EED2 /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90295431C78532E0073EED2 /* RegexHelper.swift */; };
+		E904EF811C785AF9001B9227 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904EF801C785AF9001B9227 /* TextField.swift */; };
 		E922E0671C5F3FDB00A592E8 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E922E0661C5F3FDB00A592E8 /* Config.swift */; };
 		E94528361B6E7B7100F3ADD7 /* Stat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94528351B6E7B7100F3ADD7 /* Stat.swift */; };
 		E94528381B6E84A100F3ADD7 /* Karel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E94528371B6E84A100F3ADD7 /* Karel.swift */; };
@@ -56,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		E9006C7B1B8A203B00372B69 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E90295431C78532E0073EED2 /* RegexHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegexHelper.swift; sourceTree = "<group>"; };
+		E904EF801C785AF9001B9227 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		E922E0661C5F3FDB00A592E8 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		E94528351B6E7B7100F3ADD7 /* Stat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stat.swift; sourceTree = "<group>"; };
 		E94528371B6E84A100F3ADD7 /* Karel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Karel.swift; sourceTree = "<group>"; };
@@ -128,11 +132,13 @@
 				E957E5B91C772C1900AB452B /* ConfigData+CoreDataProperties.swift */,
 				E957E5BA1C772C1900AB452B /* ConfigData.swift */,
 				E96018271B6922CB00544B27 /* ViewController.swift */,
+				E904EF801C785AF9001B9227 /* TextField.swift */,
 				E96018291B6922CB00544B27 /* Assets.xcassets */,
 				E960182B1B6922CB00544B27 /* Main.storyboard */,
 				E96018501B6923C100544B27 /* Coordinate.swift */,
 				E94528371B6E84A100F3ADD7 /* Karel.swift */,
 				E922E0661C5F3FDB00A592E8 /* Config.swift */,
+				E90295431C78532E0073EED2 /* RegexHelper.swift */,
 				E957E5941C7703D300AB452B /* Code */,
 				E96700931C12B5B5006A8D40 /* Observer.swift */,
 				E94528351B6E7B7100F3ADD7 /* Stat.swift */,
@@ -275,6 +281,7 @@
 			files = (
 				E96018281B6922CB00544B27 /* ViewController.swift in Sources */,
 				E96700941C12B5B5006A8D40 /* Observer.swift in Sources */,
+				E90295441C78532E0073EED2 /* RegexHelper.swift in Sources */,
 				E96018261B6922CB00544B27 /* AppDelegate.swift in Sources */,
 				E957E5BC1C772C1900AB452B /* ConfigData.swift in Sources */,
 				E94528361B6E7B7100F3ADD7 /* Stat.swift in Sources */,
@@ -285,6 +292,7 @@
 				E94528381B6E84A100F3ADD7 /* Karel.swift in Sources */,
 				E96018531B6923C100544B27 /* Coordinate.swift in Sources */,
 				E957E5B61C7725D800AB452B /* ConfigData.xcdatamodeld in Sources */,
+				E904EF811C785AF9001B9227 /* TextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

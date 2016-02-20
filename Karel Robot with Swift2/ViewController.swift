@@ -23,6 +23,7 @@ class ViewController: NSViewController {
     
     
 //    ——————————————一堆按钮杂七杂八
+    @IBOutlet weak var configErr: NSTextField!
     @IBOutlet weak var coorY: NSTextField!
     @IBOutlet weak var coorX: NSTextField!
     @IBOutlet weak var direcSelect: NSPopUpButton!
@@ -140,12 +141,21 @@ class ViewController: NSViewController {
             let blockSetContent = blockConfig.stringValue
             let beeperSetContent = beeperConfig.stringValue
             let direc = direcSelect.selectedCell()?.title
-            let coor = "\(coorX.stringValue),\(coorY.stringValue)"
-            config.updateConfigData(direction: direc!, coordinate:coor, blockSet: blockSetContent, beeperSet: beeperSetContent)
+            
+            let x = Double(coorX.stringValue) ?? 99
+            let y = Double(coorY.stringValue) ?? 99
+            let coor = "\(Int(x)),\(Int(y))"
+            do {
+            try config.updateConfigData(direction: direc!, coordinate:coor, blockSet: blockSetContent, beeperSet: beeperSetContent)
+            } catch {
+                configErr.hidden = false
+                return
+            }
             
             config.readConfig()//重新读取配置
             
 //            reset(self)//自动点击一下重置按钮
+            configErr.hidden = true
             reset.enabled = true
             configBox.hidden = true
             sender.title = "写代码"
@@ -194,7 +204,8 @@ class ViewController: NSViewController {
                         self.noBeeperH()
                     case Error.duang:
                         self.duangH()
-                    
+                    default:
+                        break
                     }
                     break
                 }

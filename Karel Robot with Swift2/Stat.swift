@@ -40,7 +40,9 @@ enum Direction {
 
 - duang:    撞墙的错误信号
 - noBeeper: 脚下没有Beeper
+- configError: 配置文件格式错误
 */
 enum Error:ErrorType {
-    case duang,noBeeper
+    
+    case duang,noBeeper,configError
 } //错误类型结束
