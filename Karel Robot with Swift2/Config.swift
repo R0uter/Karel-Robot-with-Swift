@@ -31,7 +31,7 @@ class Config {
      
      */
     private init () {
-        managedObjectContext = (NSApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        managedObjectContext = (NSApplication.shared().delegate as! AppDelegate).managedObjectContext
         readConfig()
         Config.hold = self
     }
@@ -69,8 +69,8 @@ class Config {
         let blockSetContent = configDatas[0].blockSet
         let beeperSetContent = configDatas[0].beeperSet
         
-        let blockSet:[String] = (blockSetContent?.componentsSeparatedByString("\n").reverse())!
-        let beeperSet:[String] = (beeperSetContent?.componentsSeparatedByString("\n").reverse())!
+        let blockSet:[String] = (blockSetContent?.components(separatedBy: "\n").reversed())!
+        let beeperSet:[String] = (beeperSetContent?.components(separatedBy: "\n").reversed())!
         /**
         *  把读取到的配置提取成可以被 Karel 解析的数组，好直接与 Karel 类兼容
         */
@@ -79,12 +79,12 @@ class Config {
             let blockRow = blockSet[y]
             let beeperRow = beeperSet[y]
             for x in 0...9 {
-                let index = blockRow.characters.startIndex.advancedBy(x)
+                let index = blockRow.characters.index(blockRow.characters.startIndex, offsetBy: x)
                 let n = Int(String(blockRow.characters[index]))!
                 if n != 0 {
                 initBlock.append((x,y))
                 }
-                let bindex = beeperRow.characters.startIndex.advancedBy(x)
+                let bindex = beeperRow.characters.index(beeperRow.characters.startIndex, offsetBy: x)
                 let bn = Int(String(beeperRow.characters[bindex]))!
                 if bn != 0 {
                 initBeeper.append((x,y,bn))
@@ -105,10 +105,11 @@ extension Config {
      - returns: NSArray of ConfigData class
      */
     func getConfigData() -> [ConfigData] {
-        let fetchRequest = NSFetchRequest(entityName: "ConfigData")
+      
+        let fetchRequest:NSFetchRequest<ConfigData> = NSFetchRequest(entityName: "ConfigData")
         var configDatas:[ConfigData] = []
         do {
-            configDatas = try managedObjectContext!.executeFetchRequest(fetchRequest) as! [ConfigData]
+            configDatas = try managedObjectContext!.fetch(fetchRequest) 
         } catch {
             print(error)
         }
@@ -121,11 +122,11 @@ extension Config {
         let configDatas = getConfigData()
         if !configDatas.isEmpty {
             for data in configDatas {
-                managedObjectContext.deleteObject(data)
+                managedObjectContext.delete(data)
             }
             try! managedObjectContext.save()
         }
-        let configData = NSEntityDescription.insertNewObjectForEntityForName("ConfigData", inManagedObjectContext: managedObjectContext) as! ConfigData
+        let configData = NSEntityDescription.insertNewObject(forEntityName: "ConfigData", into: managedObjectContext) as! ConfigData
         configData.beeperSet = "0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000"
         configData.blockSet = "0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000\n0000000000"
         configData.coordinate = "0,0"
@@ -142,16 +143,16 @@ extension Config {
      - parameter blockSet:   block setting in String
      - parameter beeperSet:  beeper setting in String
      */
-    func updateConfigData (direction direction:String,coordinate:String,blockSet:String,beeperSet:String) throws {
+    func updateConfigData (direction:String,coordinate:String,blockSet:String,beeperSet:String) throws {
         
         let configReg = "^(\\d{10}\\n){9}\\d{10}$"
         let coorReg = "^\\d,\\d$"
         
         guard blockSet =~ configReg && beeperSet =~ configReg else {
-            throw Error.configError
+            throw KeralError.configError
         }
         guard coordinate =~ coorReg else {
-            throw Error.configError
+            throw KeralError.configError
         }
         
         let configData = getConfigData()[0]

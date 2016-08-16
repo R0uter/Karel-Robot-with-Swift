@@ -10,7 +10,7 @@ import Foundation
 /// Karel 运行时的观察者
 class ErrorObserver {
     private var errorStat:Error?
-    func setError(e:Error?) {
+    func setError(_ e:Error?) {
         errorStat = e
     }
     func getError() ->Error? {

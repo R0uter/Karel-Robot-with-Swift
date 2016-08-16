@@ -18,7 +18,7 @@ class ConfigData: NSManagedObject {
         get {
             let t = coordinate
             
-            if let coo = t?.componentsSeparatedByString(","),
+            if let coo = t?.components(separatedBy: ","),
                 let x = Double(coo[0]),
             let y = Double(coo[1]) {
                 

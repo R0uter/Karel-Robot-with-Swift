@@ -10,14 +10,14 @@ import Cocoa
 
 var karel = Run()   //生成 Karel 的实例
 
-var beeper = [NSImageView](count: 100, repeatedValue: NSImageView()) //虽然很2，但我用这个 Beeper 数组储存 Beeper ……
-var beeperCount = [NSTextField](count: 100, repeatedValue: NSTextField()) //这个是用来显示 Beeper 堆叠数量的 Feild ……
-var block = [NSImageView](count: 100, repeatedValue: NSImageView() ) //同样的，用它来储存 Block ……
+var beeper = [NSImageView](repeating: NSImageView(), count: 100) //虽然很2，但我用这个 Beeper 数组储存 Beeper ……
+var beeperCount = [NSTextField](repeating: NSTextField(), count: 100) //这个是用来显示 Beeper 堆叠数量的 Feild ……
+var block = [NSImageView](repeating: NSImageView(), count: 100 ) //同样的，用它来储存 Block ……
 //为了所有的类都能访问到，我用了一堆的全局变量，不要骂我，么么哒。
-var mainQueue = NSOperationQueue.mainQueue()
-var backgroundQueue = NSOperationQueue()
-var workingThread:NSThread?
-var observerQueue = NSOperationQueue()
+var mainQueue = OperationQueue.main
+var backgroundQueue = OperationQueue()
+var workingThread:Thread?
+var observerQueue = OperationQueue()
 var isPaused = false
 let error = ErrorObserver()
 var canceled = false
@@ -42,7 +42,7 @@ enum Direction {
 - noBeeper: 脚下没有Beeper
 - configError: 配置文件格式错误
 */
-enum Error:ErrorType {
+enum KeralError:Error {
     
     case duang,noBeeper,configError
 } //错误类型结束

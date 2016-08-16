@@ -47,63 +47,63 @@ class ViewController: NSViewController {
     
     
  
-    @IBAction func reset(sender: AnyObject) {
+    @IBAction func reset(_ sender: AnyObject) {
         resetWorld()  //重置 Karel 的世界
         karel.beeperNumClean()  //清理 Beeper 的堆叠数量
         karel.initBlockAndBeeper()  //初始化设定好的世界
         
         
         error.setError(nil)
-        backgroundQueue.suspended = true
-        observerQueue.suspended = true
+        backgroundQueue.isSuspended = true
+        observerQueue.isSuspended = true
         backgroundQueue.waitUntilAllOperationsAreFinished()
         observerQueue.waitUntilAllOperationsAreFinished()
         karel.initKarel() //重新初始化 Karel ，放到开始的位置当中去。
         
-        run.enabled = true
+        run.isEnabled = true
         isPaused = false
-        duang.hidden = true
+        duang.isHidden = true
         stop.title = "暂停"
-        reset.enabled = false
-        slider.enabled = true
-        stop.enabled = false
-        codeButton.enabled = true
+        reset.isEnabled = false
+        slider.isEnabled = true
+        stop.isEnabled = false
+        codeButton.isEnabled = true
         
     }
     
     
     
-    @IBAction func run(sender: NSButton) {
-        backgroundQueue.suspended = false
-        observerQueue.suspended = false
+    @IBAction func run(_ sender: NSButton) {
+        backgroundQueue.isSuspended = false
+        observerQueue.isSuspended = false
         gogogo()
        
-        reset.enabled = true
-        stop.enabled = true
-        slider.enabled = false
-        run.enabled = false
-        codeButton.enabled = false
+        reset.isEnabled = true
+        stop.isEnabled = true
+        slider.isEnabled = false
+        run.isEnabled = false
+        codeButton.isEnabled = false
     }
     
  
-    @IBAction func stop(sender: NSButton) {
+    @IBAction func stop(_ sender: NSButton) {
         
         if !isPaused {     //如果没有暂停则暂停计时器
             stop.title = "继续"
             isPaused = true
-            slider.enabled = true
+            slider.isEnabled = true
             
         } else {        //如果暂停了计时器那么就恢复之
             stop.title = "暂停"
             isPaused = false
-            slider.enabled = false
+            slider.isEnabled = false
             
         }
     }
     
     
     
-    @IBAction func speedController(sender: NSSlider) {
+    @IBAction func speedController(_ sender: NSSlider) {
 //        取出滑动条的值
         let a = sender.doubleValue
         slowTime = a
@@ -112,16 +112,16 @@ class ViewController: NSViewController {
     /**
      切换代码配置界面按钮，用来显示代码编辑和世界配置
      */
-    @IBAction func coding(sender: NSButton) {
+    @IBAction func coding(_ sender: NSButton) {
         let config = Config.getConfig()
         
-        if configBox.hidden {//如果界面是隐藏的就打开
+        if configBox.isHidden {//如果界面是隐藏的就打开
             let configData = config.getConfigData()[0]
-            configBox.hidden = false
-            reset.enabled = false
+            configBox.isHidden = false
+            reset.isEnabled = false
             sender.title = "完成"
-            run.enabled = false
-            configTab.selectTabViewItem(configTab.tabViewItemAtIndex(0))
+            run.isEnabled = false
+            configTab.selectTabViewItem(configTab.tabViewItem(at: 0))
             
             
             let blockSetContent = configData.blockSet
@@ -133,7 +133,7 @@ class ViewController: NSViewController {
             coorX.stringValue = String(Int(Double(coo.x)))
             coorY.stringValue = String(Int(Double(coo.y)))
             
-            direcSelect.selectItem(direcSelect.itemWithTitle(configData.chDirection))
+            direcSelect.select(direcSelect.item(withTitle: configData.chDirection))
 
             
         } else {//如果界面是打开的就隐藏
@@ -148,16 +148,16 @@ class ViewController: NSViewController {
             do {
             try config.updateConfigData(direction: direc!, coordinate:coor, blockSet: blockSetContent, beeperSet: beeperSetContent)
             } catch {
-                configErr.hidden = false
+                configErr.isHidden = false
                 return
             }
             
             config.readConfig()//重新读取配置
             
 //            reset(self)//自动点击一下重置按钮
-            configErr.hidden = true
-            reset.enabled = true
-            configBox.hidden = true
+            configErr.isHidden = true
+            reset.isEnabled = true
+            configBox.isHidden = true
             sender.title = "写代码"
 //            run.enabled = true
   
@@ -190,19 +190,19 @@ class ViewController: NSViewController {
      起了这么个傲娇的名字是因为我懒得起名了😁
      */
     func gogogo() {
-        backgroundQueue.addOperationWithBlock {
+        backgroundQueue.addOperation {
             karel.run()
         }
-        observerQueue.addOperationWithBlock {
+        observerQueue.addOperation {
             while (true){
-                if observerQueue.suspended {
+                if observerQueue.isSuspended {
                     return
                 }
                 if let e = error.getError() {
                     switch e {
-                    case Error.noBeeper:
+                    case KeralError.noBeeper:
                         self.noBeeperH()
-                    case Error.duang:
+                    case KeralError.duang:
                         self.duangH()
                     default:
                         break
@@ -214,17 +214,17 @@ class ViewController: NSViewController {
         }
     }
     func duangH() {
-        mainQueue.addOperationWithBlock(){
-            self.duang.hidden = false
-            self.run.enabled = false
-            self.stop.enabled = false
+        mainQueue.addOperation(){
+            self.duang.isHidden = false
+            self.run.isEnabled = false
+            self.stop.isEnabled = false
         }
     }
     func noBeeperH() {
-        mainQueue.addOperationWithBlock(){
-            self.noBeeper.hidden = false
-            self.run.enabled = false
-            self.stop.enabled = false
+        mainQueue.addOperation(){
+            self.noBeeper.isHidden = false
+            self.run.isEnabled = false
+            self.stop.isEnabled = false
         }
     }
 
@@ -234,28 +234,28 @@ class ViewController: NSViewController {
     func genWorld() {
         for i in 0...99 {
             beeper[i] = NSImageView()
-            beeper[i].frame = CGRectMake(CGFloat( Int(i / 10) * 60 + 5), CGFloat((i % 10) * 50), 50, 50)
+            beeper[i].frame = CGRect(x: CGFloat( Int(i / 10) * 60 + 5), y: CGFloat((i % 10) * 50), width: 50, height: 50)
             beeper[i].image = NSImage(named: "beeper")
-            beeper[i].hidden = true
+            beeper[i].isHidden = true
             map.addSubview(beeper[i])
             
         }
         
         for i in 0...99 {
             beeperCount[i] = NSTextField()
-            beeperCount[i].frame = CGRectMake(CGFloat( Int(i / 10) * 60 + 18), CGFloat((i % 10) * 50 + 15), 24, 20)
+            beeperCount[i].frame = CGRect(x: CGFloat( Int(i / 10) * 60 + 18), y: CGFloat((i % 10) * 50 + 15), width: 24, height: 20)
             beeperCount[i].stringValue = ""
-            beeperCount[i].hidden = true
-            beeperCount[i].editable = false
+            beeperCount[i].isHidden = true
+            beeperCount[i].isEditable = false
             map.addSubview(beeperCount[i])
             
         }
         
         for i in 0...99 {
             block[i] = NSImageView()
-            block[i].frame = CGRectMake(CGFloat( Int(i / 10) * 60 ), CGFloat((i % 10) * 50 ), 60 , 50)
+            block[i].frame = CGRect(x: CGFloat( Int(i / 10) * 60 ), y: CGFloat((i % 10) * 50 ), width: 60 , height: 50)
             block[i].image = NSImage(named: "block")
-            block[i].hidden = true
+            block[i].isHidden = true
             map.addSubview(block[i])
         }
     }
@@ -267,18 +267,18 @@ class ViewController: NSViewController {
     func resetWorld() {
         
         for i in 0...99 {
-            beeper[i].hidden = true
+            beeper[i].isHidden = true
             
         }
         
         for i in 0...99 {
             beeperCount[i].stringValue = ""
-            beeperCount[i].hidden = true
+            beeperCount[i].isHidden = true
             
         }
         
         for i in 0...99 {
-            block[i].hidden = true
+            block[i].isHidden = true
             
         }
     }

@@ -16,12 +16,12 @@ struct RegexHelper {
     
     init(_ pattern: String) throws {
         
-    try regex = NSRegularExpression(pattern: pattern,options: .CaseInsensitive)
+    try regex = NSRegularExpression(pattern: pattern,options: .caseInsensitive)
     }
     
-    func match(input: String) -> Bool {
+    func match(_ input: String) -> Bool {
         
-    let matches = regex.matchesInString(input,options: [],range: NSMakeRange(0, input.characters.count))
+    let matches = regex.matches(in: input,options: [],range: NSMakeRange(0, input.characters.count))
         
     return matches.count > 0
         
