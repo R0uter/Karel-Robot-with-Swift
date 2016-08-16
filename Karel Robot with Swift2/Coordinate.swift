@@ -14,7 +14,7 @@ import Foundation
 struct Coordinate {
  
     
-     func getRealCoordinate(co:NSPoint)-> NSPoint {
+     func getRealCoordinate(_ co:NSPoint)-> NSPoint {
         let coordinate = co
         var currentPoint = NSPoint()
         switch karel.getDirection {

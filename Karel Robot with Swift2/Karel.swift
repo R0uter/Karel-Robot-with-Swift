@@ -11,7 +11,7 @@ import Cocoa
 
 class Karel:NSImageView {
     
-    private var beeperNumCount = [Int](count: 100, repeatedValue: 0)        //储存 Beeper 的堆叠数量
+    private var beeperNumCount = [Int](repeating: 0, count: 100)        //储存 Beeper 的堆叠数量
     private var coordinate:NSPoint = NSPoint(x: 0, y: 0) //karel 的当前坐标位置
     private var direction:Direction = .east //朝向
     private var getCoor = Coordinate()      //用来换算真实坐标的
@@ -30,7 +30,7 @@ class Karel:NSImageView {
     
     func beeperNumClean() {
         beeperNumCount.removeAll()
-        beeperNumCount = [Int](count: 100, repeatedValue: 0)
+        beeperNumCount = [Int](repeating: 0, count: 100)
     }
  
     
@@ -51,7 +51,7 @@ class Karel:NSImageView {
         }
         coordinate = config.getCoordinate
         let rect = getCoor.getRealCoordinate(coordinate)
-        self.frame = CGRectMake(rect.x, rect.y, 50, 50)
+        self.frame = CGRect(x: rect.x, y: rect.y, width: 50, height: 50)
         self.image = NSImage(named: "karel")
     }//End of initkarel()
     
@@ -63,14 +63,14 @@ class Karel:NSImageView {
     func initBlockAndBeeper() {
         for (x,y) in config.getInitBlock {
             let be = Int(x) * 10 + Int(y)
-            block[be].hidden = false
+            block[be].isHidden = false
         }
         for (x,y,number) in config.getInitBeeper {
             let be = Int(x) * 10 + Int(y)
             beeperNumCount[be] = number
             beeperCount[be].stringValue = "\(beeperNumCount[be])"
-            beeperCount[be].hidden = false
-            beeper[be].hidden = false
+            beeperCount[be].isHidden = false
+            beeper[be].isHidden = false
         }
     }//End of initkarel
 }//Karel 结束
@@ -86,13 +86,13 @@ extension Karel {
     func karelIsBlocked() ->Bool {
         var b = false
         switch direction {
-        case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
+        case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].isHidden :
             break
-        case .south where coordinate.y > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
+        case .south where coordinate.y > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].isHidden:
             break
-        case .west where coordinate.x  > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
+        case .west where coordinate.x  > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].isHidden:
             break
-        case .north where coordinate.y < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+        case .north where coordinate.y < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].isHidden:
             break
         default:
             b = true
@@ -122,23 +122,23 @@ extension Karel {
     func KarelMove() throws{
         
         switch direction {
-            case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].hidden :
+            case .east where coordinate.x < 9 && block[Int(coordinate.x + 1) * 10 + Int(coordinate.y)].isHidden :
                 coordinate.x += 1
-            case .south where coordinate.y > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].hidden:
+            case .south where coordinate.y > 0 && block[Int(coordinate.x) * 10 + Int(coordinate.y - 1)].isHidden:
                 coordinate.y -= 1
-            case .west where coordinate.x > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].hidden:
+            case .west where coordinate.x > 0 && block[Int(coordinate.x - 1) * 10 + Int(coordinate.y)].isHidden:
                 coordinate.x -= 1
-            case .north where coordinate.y < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].hidden:
+            case .north where coordinate.y < 9 && block[Int(coordinate.x) * 10 + Int(coordinate.y + 1)].isHidden:
                 coordinate.y += 1
             default:
-                throw Error.duang
+                throw KarelError.duang
         }
         let  realcoor = getCoor.getRealCoordinate(coordinate)
         
         let x:CGFloat = realcoor.x
         let y:CGFloat =  realcoor.y
        
-        self.frame = CGRectMake(x, y, 50, 50)
+        self.frame = CGRect(x: x, y: y, width: 50, height: 50)
            
     } //End of move()
     
@@ -182,8 +182,8 @@ extension Karel {
         if (self.beeperNumCount[be] + 1) >= 0 {
             self.beeperNumCount[be] += 1
              //如果没有则放置Beeper
-                beeper[be].hidden = false
-                beeperCount[be].hidden = false
+                beeper[be].isHidden = false
+                beeperCount[be].isHidden = false
             }
             // 最后刷新Beeper的数量显示
             beeperCount[be].stringValue = "\(self.beeperNumCount[be])"
@@ -198,11 +198,11 @@ extension Karel {
         if (self.beeperNumCount[be] - 1) >= 0 {
             self.beeperNumCount[be] -= 1
             if self.beeperNumCount[be] == 0 {
-                beeper[be].hidden = true
-                beeperCount[be].hidden = true
+                beeper[be].isHidden = true
+                beeperCount[be].isHidden = true
             }
         } else {
-            throw Error.noBeeper
+            throw KarelError.noBeeper
         }
             //最后刷新Beeper的数量显示
             beeperCount[be].stringValue = "\(self.beeperNumCount[be])"
@@ -217,73 +217,73 @@ extension Karel {
     func check() {
         
         while isPaused {
-            NSThread.sleepForTimeInterval(0.5)
+            Thread.sleep(forTimeInterval: 0.5)
         }
-        NSThread.sleepForTimeInterval(slowTime)
+        Thread.sleep(forTimeInterval: slowTime)
     }
    
     ///包装一下方法名称，给run用。
     func move() {
         
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
         check()
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
-                mainQueue.addOperationWithBlock(){
+                mainQueue.addOperation(){
        
             do {
             try self.KarelMove()
-            } catch Error.duang {
-                error.setError(Error.duang)
-                backgroundQueue.suspended = true
+            } catch KarelError.duang {
+                error.setError(KarelError.duang)
+                backgroundQueue.isSuspended = true
             } catch {
                 NSLog("move() throws a unknowen eror")
             }
         }
     }
     func turnLeft() {
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
         check()
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
-        mainQueue.addOperationWithBlock(){
+        mainQueue.addOperation(){
         self.KarelTurnLeft()
         }
     }
     func putBeeper() {
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
         check()
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
-        mainQueue.addOperationWithBlock(){
+        mainQueue.addOperation(){
         
          self.KarelPutBeeper()
         }
     }
     func pickBeeper() {
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
         check()
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return
         }
-        mainQueue.addOperationWithBlock(){
+        mainQueue.addOperation(){
       
             do {
                 try self.KarelPickBeeper()
-            } catch Error.noBeeper {
-                error.setError(Error.noBeeper)
-                backgroundQueue.suspended = true
+            } catch KarelError.noBeeper {
+                error.setError(KarelError.noBeeper)
+                backgroundQueue.isSuspended = true
             } catch {
                 NSLog("pickBeeper throws a unknowen eror")
             }
@@ -291,22 +291,22 @@ extension Karel {
         }
     }
     func isBlocked()->Bool {
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return true
         }
         check()
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return true
         }
         return karelIsBlocked()
        
     }
     func isBeeperHere()->Bool {
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return true
         }
         check()
-        if backgroundQueue.suspended {
+        if backgroundQueue.isSuspended {
             return true
         }
         return   karelIsBeeperHere()
