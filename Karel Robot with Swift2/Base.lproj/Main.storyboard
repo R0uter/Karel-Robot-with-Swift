@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11191"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
@@ -776,7 +775,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="klZ-7y-TEM">
-                                            <rect key="frame" x="60" y="0.0" width="4" height="498"/>
+                                            <rect key="frame" x="60" y="0.0" width="5" height="498"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </box>
                                         <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Lu3-E9-dwW">
@@ -817,11 +816,11 @@
                                 <color key="fillColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </box>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QJT-id-3cz">
-                                <rect key="frame" x="31" y="30" width="604" height="26"/>
+                                <rect key="frame" x="31" y="30" width="604" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" alignment="left" minValue="0.10000000000000001" maxValue="1.1000000000000001" doubleValue="0.20000000000000001" tickMarkPosition="above" numberOfTickMarks="11" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Fb8-hL-6Qd"/>
                                 <connections>
-                                    <action selector="speedControllerWithSender:" target="XfG-lQ-9wD" id="BcJ-gI-4QU"/>
+                                    <action selector="speedController:" target="XfG-lQ-9wD" id="GYy-kC-093"/>
                                 </connections>
                             </slider>
                             <box horizontalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="YKs-JG-6st">
@@ -836,7 +835,7 @@
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="runWithSender:" target="XfG-lQ-9wD" id="v4y-7Z-xRM"/>
+                                    <action selector="run:" target="XfG-lQ-9wD" id="xYp-YR-Ulh"/>
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUh-gW-rI0">
@@ -847,7 +846,7 @@
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="stopWithSender:" target="XfG-lQ-9wD" id="uLC-Fx-LAY"/>
+                                    <action selector="stop:" target="XfG-lQ-9wD" id="4W0-nT-XFI"/>
                                 </connections>
                             </button>
                             <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-Gu-bdv">
@@ -867,7 +866,7 @@
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="resetWithSender:" target="XfG-lQ-9wD" id="Avp-qW-h8C"/>
+                                    <action selector="reset:" target="XfG-lQ-9wD" id="RKt-c3-oam"/>
                                 </connections>
                             </button>
                             <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpq-qE-9CU" userLabel="noBeeper">

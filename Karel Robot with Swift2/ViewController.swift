@@ -38,7 +38,7 @@ class ViewController: NSViewController {
     
     
  
-    @IBAction func reset(sender: AnyObject) {
+    @IBAction func reset(_ sender: AnyObject) {
         resetWorld()  //重置 Karel 的世界
         karel.beeperNumClean()  //清理 Beeper 的堆叠数量
         karel.initBlockAndBeeper()  //初始化设定好的世界
@@ -61,7 +61,7 @@ class ViewController: NSViewController {
     
     
     
-    @IBAction func run(sender: NSButton) {
+    @IBAction func run(_ sender: NSButton) {
         backgroundQueue.isSuspended = false
         observerQueue.isSuspended = false
         gogogo()
@@ -72,7 +72,7 @@ class ViewController: NSViewController {
     }
     
  
-    @IBAction func stop(sender: NSButton) {
+    @IBAction func stop(_ sender: NSButton) {
         
         if !isPaused {     //如果没有暂停则暂停计时器
             stop.title = "继续"
@@ -87,7 +87,7 @@ class ViewController: NSViewController {
     
     
     
-    @IBAction func speedController(sender: NSSlider) {
+    @IBAction func speedController(_ sender: NSSlider) {
 //        取出滑动条的值
         let a = sender.doubleValue
         slowTime = a
@@ -110,11 +110,7 @@ class ViewController: NSViewController {
     override func viewDidAppear() {
     }
 
-    override var representedObject: AnyObject? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
+    
     
     /**
      起了这么个傲娇的名字是因为我懒得起名了😁
