@@ -1,4 +1,4 @@
-#Karel Robot with Swift 3
+# Karel Robot with Swift 3
 
 使用最新的 Swift 3
 ----
@@ -9,7 +9,7 @@
 总之，来试试吧~
 
 
-##使用说明
+## 使用说明
 
 这个 Karel 机器人是用来给你入门学习编程思想的，你可以直接按照我的课程当中那样使用它；也可以观摩代码来了解它的实现——虽然写的不是很漂亮啦。
 
@@ -20,7 +20,7 @@
 在 `Config.swift` 文件中，你可以配置 Karel 的初始化信息，比如 Karel 的初始位置，朝向，还有世界的初始 Beeper 和 Block 位置，十分的方便。你也可以把其他人写好的世界信息直接粘贴导入，再也不用拷贝整个项目了。也不需要在代码里更改，避免了意外毁掉整个程序：）
 
 
-##再说两句
+## 再说两句
 
 Karel 这个东西在国内好像不是很流行的，在国外我也不知道如今是否还是CS课程里的必修入门课——但我学习编程却真的是从 Karel 走进来的——看着 Java 的 Karel 学习 Swift 。
 
@@ -35,7 +35,7 @@ R0uter
 
 >Hope enjoy!
 
-##MIT License (MIT)
+## MIT License (MIT)
 
 The MIT License (MIT)
 
