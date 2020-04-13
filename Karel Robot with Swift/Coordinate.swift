@@ -12,9 +12,7 @@ import Foundation
  *  反正我就是懒得合并了，这样看起来更整洁不是吗？（其实是更乱了吧！）
  */
 struct Coordinate {
- 
-    
-     func getRealCoordinate(_ co:NSPoint)-> NSPoint {
+    func getRealCoordinate(_ co: NSPoint) -> NSPoint {
         let coordinate = co
         var currentPoint = NSPoint()
         switch karel.getDirection {
@@ -33,6 +31,4 @@ struct Coordinate {
         }
         return currentPoint
     }
-    
-    
 }

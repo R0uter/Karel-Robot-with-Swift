@@ -1,8 +1,8 @@
-# Karel Robot with Swift 3
+# Karel Robot with Swift
 
-使用最新的 Swift 3
+使用最新的 Swift 5 构建
 ----
-这是我用 Swift 3 实现的一个 Karel 机器人，它能够允许你通过`move()` `putBeeper()` `putBeeper()` `turnLeft()`这四个命令来控制 Karel 解决各种问题。
+这是我用 Swift 5 实现的一个 Karel 机器人，它能够允许你通过`move()` `putBeeper()` `putBeeper()` `turnLeft()`这四个命令来控制 Karel 解决各种问题。
 另外还有`isBlocked()`和`isBeeperHere()`来获得 Karel 的当前状态，，前者是看 Karel 面前是否有墙，后者是看 Karel 脚下是否有 Beeper。
 
 >Karel 其实某种意义上来说就是一个图灵机的模拟器。
@@ -30,7 +30,7 @@ Karel 这个东西在国内好像不是很流行的，在国外我也不知道�
 R0uter 
 以上
 
-2015年12月05日22:14:00
+2020-04-13 17:02:42
 
 
 >Hope enjoy!
@@ -39,7 +39,7 @@ R0uter
 
 The MIT License (MIT)
 
-Copyright (c) 2015-2016 R0uter
+Copyright (c) 2015-2020 R0uter
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

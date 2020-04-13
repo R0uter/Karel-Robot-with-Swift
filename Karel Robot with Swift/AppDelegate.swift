@@ -10,9 +10,6 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
     }
@@ -20,7 +17,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-
 }
+extension NSImage {
+    func tint(color: NSColor) -> NSImage {
+        let image = self.copy() as! NSImage
+        image.lockFocus()
 
+        color.set()
+
+        let imageRect = NSRect(origin: NSZeroPoint, size: image.size)
+        imageRect.fill(using: .sourceAtop)
+
+        image.unlockFocus()
+
+        return image
+    }
+}

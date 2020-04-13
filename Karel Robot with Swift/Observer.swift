@@ -9,11 +9,12 @@
 import Foundation
 /// Karel 运行时的观察者
 class ErrorObserver {
-    fileprivate var errorStat:Error?
-    func setError(_ e:Error?) {
+    fileprivate var errorStat: Error?
+    func setError(_ e: Error?) {
         errorStat = e
     }
-    func getError() ->Error? {
+
+    func getError() -> Error? {
         return errorStat
     }
 }

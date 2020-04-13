@@ -14,41 +14,44 @@ struct Config {
     typealias x = Int
     typealias y = Int
     typealias number = Int
-    
-    fileprivate var direction:Direction = .east
-    fileprivate var coordinate:NSPoint = NSPoint(x: 0, y: 0)
-    fileprivate var initBlock:[(x,y)] = []
-    fileprivate var initBeeper:[(x,y,number)] = []
+
+    fileprivate var direction: Direction = .east
+    fileprivate var coordinate: NSPoint = NSPoint(x: 0, y: 0)
+    fileprivate var initBlock: [(x, y)] = []
+    fileprivate var initBeeper: [(x, y, number)] = []
     /**
      在这里覆盖配置，配置信息写在初始化器里，直接覆盖初始化器即可！
-     
+
      direction 为Karel的朝向 分为 .east .north .south .west
      coordinate 为Karel的初始位置
      initBlock 为初始化墙壁信息，格式为[(x,y)]：[(3,3),(4,4)]
      initBeeper 为初始化Beeper信息，格式为[(x,y,number)]：[(1,1,1),(2,2,8)]
-     
+
      */
-    init () {
+    init() {
         direction = .east
         coordinate = NSPoint(x: 0, y: 0)
-        initBlock = [(3,3),(4,4)]
-        initBeeper = [(1,1,1),(2,2,8)]
+        initBlock = [(3, 3), (4, 4)]
+        initBeeper = [(1, 1, 1), (2, 2, 8)]
     }
-}//这里创建Beeper！  三个整形元组，第三个数字是Beeper的堆叠数量！前两个是坐标。
-
+} // 这里创建Beeper！  三个整形元组，第三个数字是Beeper的堆叠数量！前两个是坐标。
 
 // MARK: - 写一堆getter
+
 extension Config {
-    var getDirection:Direction {
+    var getDirection: Direction {
         return direction
     }
-    var getCoordinate:NSPoint {
+
+    var getCoordinate: NSPoint {
         return coordinate
     }
-    var getInitBlock:[(Int,Int)] {
+
+    var getInitBlock: [(Int, Int)] {
         return initBlock
     }
-    var getInitBeeper:[(Int,Int,Int)] {
+
+    var getInitBeeper: [(Int, Int, Int)] {
         return initBeeper
     }
 }
